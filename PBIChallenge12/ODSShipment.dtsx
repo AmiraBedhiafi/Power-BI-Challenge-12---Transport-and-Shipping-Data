@@ -11,8 +11,8 @@
   DTS:LocaleID="1036"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="36"
-  DTS:VersionGUID="{DF38BA9D-68D8-47F3-9860-086FBE9959BB}">
+  DTS:VersionBuild="43"
+  DTS:VersionGUID="{C962E53D-708A-4645-8928-2BCB25188120}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -32,11 +32,253 @@
           version="1">
           <components>
             <component
-              refId="Package\ODS Dim Agent\Source OLE DB"
+              refId="Package\ODS Dim Agent\Insert Update Date"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Colonne dérivée;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Crée de nouvelles valeurs de colonne en appliquant des expressions aux colonnes d'entrée de transformation. Créez de nouvelles colonnes ou remplacez celles qui existent déjà. Par exemple, concaténez les valeurs de la colonne 'prénom' et de la colonne 'nom' pour créer une colonne 'nom complet'."
+              name="Insert Update Date"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\ODS Dim Agent\Insert Update Date.Inputs[Entrée de colonne dérivée]"
+                  description="Entrée de la transformation de colonnes dérivées"
+                  name="Entrée de colonne dérivée">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ODS Dim Agent\Insert Update Date.Outputs[Sortie de colonne dérivée]"
+                  description="Sortie par défaut de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  name="Sortie de colonne dérivée"
+                  synchronousInputId="Package\ODS Dim Agent\Insert Update Date.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ODS Dim Agent\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSInsertionDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\ODS Dim Agent\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSInsertionDate]"
+                      name="ODSInsertionDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">[GETUTCDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETUTCDATE()</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ODS Dim Agent\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]"
+                      dataType="date"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\ODS Dim Agent\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]"
+                      name="ODSUpdateDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">(DT_DATE)"31/12/1900 00:00:00"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DATE)"31/12/1900 00:00:00"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ODS Dim Agent\Insert Update Date.Outputs[Sortie d'erreur de colonne dérivée]"
+                  description="Sortie d'erreur de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de colonne dérivée"
+                  synchronousInputId="Package\ODS Dim Agent\Insert Update Date.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ODS Dim Agent\Insert Update Date.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ODS Dim Agent\Insert Update Date.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ODS Dim Agent\Insert Update Date.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ODS Dim Agent\Insert Update Date.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ODS Dim Agent\ODS Dim Agent"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="ODS Dim Agent"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[ODS].[DimAgent]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ODS Dim Agent\ODS Dim Agent.Connections[OleDbConnection]"
+                  connectionManagerID="{33B3DBF0-42D4-44A1-BEE1-29831B08F736}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.PBIChallenge]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ODS Dim Agent\ODS Dim Agent.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ODS Dim Agent\ODS Dim Agent.Inputs[Entrée de destination OLE DB].Columns[Sending Agent Code]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Sending Agent Code"
+                      externalMetadataColumnId="Package\ODS Dim Agent\ODS Dim Agent.Inputs[Entrée de destination OLE DB].ExternalColumns[Sending Agent Code]"
+                      lineageId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie de source OLE DB].Columns[Sending Agent Code]" />
+                    <inputColumn
+                      refId="Package\ODS Dim Agent\ODS Dim Agent.Inputs[Entrée de destination OLE DB].Columns[Sending Agent Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Sending Agent Name"
+                      externalMetadataColumnId="Package\ODS Dim Agent\ODS Dim Agent.Inputs[Entrée de destination OLE DB].ExternalColumns[Sending Agent Name]"
+                      lineageId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie de source OLE DB].Columns[Sending Agent Name]" />
+                    <inputColumn
+                      refId="Package\ODS Dim Agent\ODS Dim Agent.Inputs[Entrée de destination OLE DB].Columns[ODSInsertionDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ODSInsertionDate"
+                      externalMetadataColumnId="Package\ODS Dim Agent\ODS Dim Agent.Inputs[Entrée de destination OLE DB].ExternalColumns[ODSInsertionDate]"
+                      lineageId="Package\ODS Dim Agent\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSInsertionDate]" />
+                    <inputColumn
+                      refId="Package\ODS Dim Agent\ODS Dim Agent.Inputs[Entrée de destination OLE DB].Columns[ODSUpdateDate]"
+                      cachedDataType="date"
+                      cachedName="ODSUpdateDate"
+                      externalMetadataColumnId="Package\ODS Dim Agent\ODS Dim Agent.Inputs[Entrée de destination OLE DB].ExternalColumns[ODSUpdateDate]"
+                      lineageId="Package\ODS Dim Agent\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ODS Dim Agent\ODS Dim Agent.Inputs[Entrée de destination OLE DB].ExternalColumns[Sending Agent Code]"
+                      dataType="wstr"
+                      length="255"
+                      name="Sending Agent Code" />
+                    <externalMetadataColumn
+                      refId="Package\ODS Dim Agent\ODS Dim Agent.Inputs[Entrée de destination OLE DB].ExternalColumns[Sending Agent Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Sending Agent Name" />
+                    <externalMetadataColumn
+                      refId="Package\ODS Dim Agent\ODS Dim Agent.Inputs[Entrée de destination OLE DB].ExternalColumns[ODSInsertionDate]"
+                      dataType="dbTimeStamp"
+                      name="ODSInsertionDate" />
+                    <externalMetadataColumn
+                      refId="Package\ODS Dim Agent\ODS Dim Agent.Inputs[Entrée de destination OLE DB].ExternalColumns[ODSUpdateDate]"
+                      dataType="dbTimeStamp"
+                      name="ODSUpdateDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ODS Dim Agent\ODS Dim Agent.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\ODS Dim Agent\ODS Dim Agent.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ODS Dim Agent\ODS Dim Agent.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ODS Dim Agent\ODS Dim Agent.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ODS Dim Agent\ODS Dim Agent.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ODS Dim Agent\ODS Dim Agent.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ODS Dim Agent\STG Dim Agent"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
               description="Source OLE DB"
-              name="Source OLE DB"
+              name="STG Dim Agent"
               usesDispositions="true"
               version="7">
               <properties>
@@ -81,7 +323,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\ODS Dim Agent\Source OLE DB.Connections[OleDbConnection]"
+                  refId="Package\ODS Dim Agent\STG Dim Agent.Connections[OleDbConnection]"
                   connectionManagerID="{33B3DBF0-42D4-44A1-BEE1-29831B08F736}:external"
                   connectionManagerRefId="Project.ConnectionManagers[LocalHost.PBIChallenge]"
                   description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
@@ -89,71 +331,71 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\ODS Dim Agent\Source OLE DB.Outputs[Sortie de source OLE DB]"
+                  refId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie de source OLE DB]"
                   name="Sortie de source OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ODS Dim Agent\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Sending Agent Code]"
+                      refId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie de source OLE DB].Columns[Sending Agent Code]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ODS Dim Agent\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Sending Agent Code]"
+                      externalMetadataColumnId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie de source OLE DB].ExternalColumns[Sending Agent Code]"
                       length="255"
-                      lineageId="Package\ODS Dim Agent\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Sending Agent Code]"
+                      lineageId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie de source OLE DB].Columns[Sending Agent Code]"
                       name="Sending Agent Code"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\ODS Dim Agent\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Sending Agent Name]"
+                      refId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie de source OLE DB].Columns[Sending Agent Name]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ODS Dim Agent\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Sending Agent Name]"
+                      externalMetadataColumnId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie de source OLE DB].ExternalColumns[Sending Agent Name]"
                       length="255"
-                      lineageId="Package\ODS Dim Agent\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Sending Agent Name]"
+                      lineageId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie de source OLE DB].Columns[Sending Agent Name]"
                       name="Sending Agent Name"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\ODS Dim Agent\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Sending Agent Code]"
+                      refId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie de source OLE DB].ExternalColumns[Sending Agent Code]"
                       dataType="wstr"
                       length="255"
                       name="Sending Agent Code" />
                     <externalMetadataColumn
-                      refId="Package\ODS Dim Agent\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Sending Agent Name]"
+                      refId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie de source OLE DB].ExternalColumns[Sending Agent Name]"
                       dataType="wstr"
                       length="255"
                       name="Sending Agent Name" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\ODS Dim Agent\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB]"
+                  refId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie d'erreur de source OLE DB]"
                   isErrorOut="true"
                   name="Sortie d'erreur de source OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ODS Dim Agent\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Sending Agent Code]"
+                      refId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie d'erreur de source OLE DB].Columns[Sending Agent Code]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\ODS Dim Agent\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Sending Agent Code]"
+                      lineageId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie d'erreur de source OLE DB].Columns[Sending Agent Code]"
                       name="Sending Agent Code" />
                     <outputColumn
-                      refId="Package\ODS Dim Agent\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Sending Agent Name]"
+                      refId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie d'erreur de source OLE DB].Columns[Sending Agent Name]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\ODS Dim Agent\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Sending Agent Name]"
+                      lineageId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie d'erreur de source OLE DB].Columns[Sending Agent Name]"
                       name="Sending Agent Name" />
                     <outputColumn
-                      refId="Package\ODS Dim Agent\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      refId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\ODS Dim Agent\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      lineageId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\ODS Dim Agent\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      refId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\ODS Dim Agent\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      lineageId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -162,6 +404,18 @@
               </outputs>
             </component>
           </components>
+          <paths>
+            <path
+              refId="Package\ODS Dim Agent.Paths[Sortie de colonne dérivée]"
+              endId="Package\ODS Dim Agent\ODS Dim Agent.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de colonne dérivée"
+              startId="Package\ODS Dim Agent\Insert Update Date.Outputs[Sortie de colonne dérivée]" />
+            <path
+              refId="Package\ODS Dim Agent.Paths[Sortie de source OLE DB]"
+              endId="Package\ODS Dim Agent\Insert Update Date.Inputs[Entrée de colonne dérivée]"
+              name="Sortie de source OLE DB"
+              startId="Package\ODS Dim Agent\STG Dim Agent.Outputs[Sortie de source OLE DB]" />
+          </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -266,7 +520,7 @@
                       lineageId="Package\ODS Dim Branch\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSInsertionDate]" />
                     <inputColumn
                       refId="Package\ODS Dim Branch\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[ODSUpdateDate]"
-                      cachedDataType="dbTimeStamp"
+                      cachedDataType="date"
                       cachedName="ODSUpdateDate"
                       externalMetadataColumnId="Package\ODS Dim Branch\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[ODSUpdateDate]"
                       lineageId="Package\ODS Dim Branch\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]" />
@@ -365,7 +619,7 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\ODS Dim Branch\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]"
-                      dataType="dbTimeStamp"
+                      dataType="date"
                       errorOrTruncationOperation="Calcul"
                       errorRowDisposition="FailComponent"
                       lineageId="Package\ODS Dim Branch\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]"
@@ -376,13 +630,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Expression de colonne dérivée"
-                          name="Expression">[GETUTCDATE]()</property>
+                          name="Expression">(DT_DATE)"31/12/1900 00:00:00"</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Expression claire de colonne dérivée"
                           expressionType="Notify"
-                          name="FriendlyExpression">GETUTCDATE()</property>
+                          name="FriendlyExpression">(DT_DATE)"31/12/1900 00:00:00"</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1410,7 +1664,7 @@ WHERE [Job Branch] IS NOT NULL</property>
                     </outputColumn>
                     <outputColumn
                       refId="Package\ODS Dim Customer\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]"
-                      dataType="dbTimeStamp"
+                      dataType="date"
                       errorOrTruncationOperation="Calcul"
                       errorRowDisposition="FailComponent"
                       lineageId="Package\ODS Dim Customer\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]"
@@ -1421,13 +1675,13 @@ WHERE [Job Branch] IS NOT NULL</property>
                           containsID="true"
                           dataType="System.String"
                           description="Expression de colonne dérivée"
-                          name="Expression">[GETUTCDATE]()</property>
+                          name="Expression">(DT_DATE)"31/12/1900 00:00:00"</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Expression claire de colonne dérivée"
                           expressionType="Notify"
-                          name="FriendlyExpression">GETUTCDATE()</property>
+                          name="FriendlyExpression">(DT_DATE)"31/12/1900 00:00:00"</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1552,7 +1806,7 @@ WHERE [Job Branch] IS NOT NULL</property>
                       lineageId="Package\ODS Dim Customer\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSInsertionDate]" />
                     <inputColumn
                       refId="Package\ODS Dim Customer\ODS Dim Customer.Inputs[Entrée de destination OLE DB].Columns[ODSUpdateDate]"
-                      cachedDataType="dbTimeStamp"
+                      cachedDataType="date"
                       cachedName="ODSUpdateDate"
                       externalMetadataColumnId="Package\ODS Dim Customer\ODS Dim Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[ODSUpdateDate]"
                       lineageId="Package\ODS Dim Customer\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]" />
@@ -1817,7 +2071,7 @@ WHERE [Consignee Code] IS NOT NULL</property>
                     </outputColumn>
                     <outputColumn
                       refId="Package\ODS Dim Employee\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]"
-                      dataType="dbTimeStamp"
+                      dataType="date"
                       errorOrTruncationOperation="Calcul"
                       errorRowDisposition="FailComponent"
                       lineageId="Package\ODS Dim Employee\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]"
@@ -1828,13 +2082,13 @@ WHERE [Consignee Code] IS NOT NULL</property>
                           containsID="true"
                           dataType="System.String"
                           description="Expression de colonne dérivée"
-                          name="Expression">[GETUTCDATE]()</property>
+                          name="Expression">(DT_DATE)"31/12/1900 00:00:00"</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Expression claire de colonne dérivée"
                           expressionType="Notify"
-                          name="FriendlyExpression">GETUTCDATE()</property>
+                          name="FriendlyExpression">(DT_DATE)"31/12/1900 00:00:00"</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1959,7 +2213,7 @@ WHERE [Consignee Code] IS NOT NULL</property>
                       lineageId="Package\ODS Dim Employee\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSInsertionDate]" />
                     <inputColumn
                       refId="Package\ODS Dim Employee\ODS Dim Employee.Inputs[Entrée de destination OLE DB].Columns[ODSUpdateDate]"
-                      cachedDataType="dbTimeStamp"
+                      cachedDataType="date"
                       cachedName="ODSUpdateDate"
                       externalMetadataColumnId="Package\ODS Dim Employee\ODS Dim Employee.Inputs[Entrée de destination OLE DB].ExternalColumns[ODSUpdateDate]"
                       lineageId="Package\ODS Dim Employee\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]" />
@@ -2224,7 +2478,7 @@ WHERE [Job Sales Rep] IS NOT NULL</property>
                     </outputColumn>
                     <outputColumn
                       refId="Package\ODS Dim Importer\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]"
-                      dataType="dbTimeStamp"
+                      dataType="date"
                       errorOrTruncationOperation="Calcul"
                       errorRowDisposition="FailComponent"
                       lineageId="Package\ODS Dim Importer\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]"
@@ -2235,13 +2489,13 @@ WHERE [Job Sales Rep] IS NOT NULL</property>
                           containsID="true"
                           dataType="System.String"
                           description="Expression de colonne dérivée"
-                          name="Expression">[GETUTCDATE]()</property>
+                          name="Expression">(DT_DATE)"31/12/1900 00:00:00"</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Expression claire de colonne dérivée"
                           expressionType="Notify"
-                          name="FriendlyExpression">GETUTCDATE()</property>
+                          name="FriendlyExpression">(DT_DATE)"31/12/1900 00:00:00"</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -2366,7 +2620,7 @@ WHERE [Job Sales Rep] IS NOT NULL</property>
                       lineageId="Package\ODS Dim Importer\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSInsertionDate]" />
                     <inputColumn
                       refId="Package\ODS Dim Importer\ODS Dim Importer.Inputs[Entrée de destination OLE DB].Columns[ODSUpdateDate]"
-                      cachedDataType="dbTimeStamp"
+                      cachedDataType="date"
                       cachedName="ODSUpdateDate"
                       externalMetadataColumnId="Package\ODS Dim Importer\ODS Dim Importer.Inputs[Entrée de destination OLE DB].ExternalColumns[ODSUpdateDate]"
                       lineageId="Package\ODS Dim Importer\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]" />
@@ -2631,7 +2885,7 @@ WHERE [Local Client Code] IS NOT NULL</property>
                     </outputColumn>
                     <outputColumn
                       refId="Package\ODS Dim Job\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]"
-                      dataType="dbTimeStamp"
+                      dataType="date"
                       errorOrTruncationOperation="Calcul"
                       errorRowDisposition="FailComponent"
                       lineageId="Package\ODS Dim Job\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]"
@@ -2642,13 +2896,13 @@ WHERE [Local Client Code] IS NOT NULL</property>
                           containsID="true"
                           dataType="System.String"
                           description="Expression de colonne dérivée"
-                          name="Expression">[GETUTCDATE]()</property>
+                          name="Expression">(DT_DATE)"31/12/1900 00:00:00"</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Expression claire de colonne dérivée"
                           expressionType="Notify"
-                          name="FriendlyExpression">GETUTCDATE()</property>
+                          name="FriendlyExpression">(DT_DATE)"31/12/1900 00:00:00"</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -2766,7 +3020,7 @@ WHERE [Local Client Code] IS NOT NULL</property>
                       lineageId="Package\ODS Dim Job\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSInsertionDate]" />
                     <inputColumn
                       refId="Package\ODS Dim Job\ODS Dim Job.Inputs[Entrée de destination OLE DB].Columns[ODSUpdateDate]"
-                      cachedDataType="dbTimeStamp"
+                      cachedDataType="date"
                       cachedName="ODSUpdateDate"
                       externalMetadataColumnId="Package\ODS Dim Job\ODS Dim Job.Inputs[Entrée de destination OLE DB].ExternalColumns[ODSUpdateDate]"
                       lineageId="Package\ODS Dim Job\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]" />
@@ -2984,12 +3238,12 @@ WHERE [Job Dept] IS NOT NULL</property>
                   synchronousInputId="Package\ODS Dim Partner\Inserted Updated Date.Inputs[Entrée de colonne dérivée]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ODS Dim Partner\Inserted Updated Date.Outputs[Sortie de colonne dérivée].Columns[InsertedDate]"
+                      refId="Package\ODS Dim Partner\Inserted Updated Date.Outputs[Sortie de colonne dérivée].Columns[ODSInsertionDate]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Calcul"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\ODS Dim Partner\Inserted Updated Date.Outputs[Sortie de colonne dérivée].Columns[InsertedDate]"
-                      name="InsertedDate"
+                      lineageId="Package\ODS Dim Partner\Inserted Updated Date.Outputs[Sortie de colonne dérivée].Columns[ODSInsertionDate]"
+                      name="ODSInsertionDate"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -3006,12 +3260,12 @@ WHERE [Job Dept] IS NOT NULL</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\ODS Dim Partner\Inserted Updated Date.Outputs[Sortie de colonne dérivée].Columns[UpdatedDate]"
+                      refId="Package\ODS Dim Partner\Inserted Updated Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]"
                       dataType="date"
                       errorOrTruncationOperation="Calcul"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\ODS Dim Partner\Inserted Updated Date.Outputs[Sortie de colonne dérivée].Columns[UpdatedDate]"
-                      name="UpdatedDate"
+                      lineageId="Package\ODS Dim Partner\Inserted Updated Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]"
+                      name="ODSUpdateDate"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -3142,17 +3396,17 @@ WHERE [Job Dept] IS NOT NULL</property>
                       externalMetadataColumnId="Package\ODS Dim Partner\ODS Dim Partner.Inputs[Entrée de destination OLE DB].ExternalColumns[Overseas Agent Name]"
                       lineageId="Package\ODS Dim Partner\STG Dim Partner.Outputs[Sortie de source OLE DB].Columns[Overseas Agent Name]" />
                     <inputColumn
-                      refId="Package\ODS Dim Partner\ODS Dim Partner.Inputs[Entrée de destination OLE DB].Columns[InsertedDate]"
+                      refId="Package\ODS Dim Partner\ODS Dim Partner.Inputs[Entrée de destination OLE DB].Columns[ODSInsertionDate]"
                       cachedDataType="dbTimeStamp"
-                      cachedName="InsertedDate"
+                      cachedName="ODSInsertionDate"
                       externalMetadataColumnId="Package\ODS Dim Partner\ODS Dim Partner.Inputs[Entrée de destination OLE DB].ExternalColumns[InsertedDate]"
-                      lineageId="Package\ODS Dim Partner\Inserted Updated Date.Outputs[Sortie de colonne dérivée].Columns[InsertedDate]" />
+                      lineageId="Package\ODS Dim Partner\Inserted Updated Date.Outputs[Sortie de colonne dérivée].Columns[ODSInsertionDate]" />
                     <inputColumn
-                      refId="Package\ODS Dim Partner\ODS Dim Partner.Inputs[Entrée de destination OLE DB].Columns[UpdatedDate]"
+                      refId="Package\ODS Dim Partner\ODS Dim Partner.Inputs[Entrée de destination OLE DB].Columns[ODSUpdateDate]"
                       cachedDataType="date"
-                      cachedName="UpdatedDate"
+                      cachedName="ODSUpdateDate"
                       externalMetadataColumnId="Package\ODS Dim Partner\ODS Dim Partner.Inputs[Entrée de destination OLE DB].ExternalColumns[UpdatedDate]"
-                      lineageId="Package\ODS Dim Partner\Inserted Updated Date.Outputs[Sortie de colonne dérivée].Columns[UpdatedDate]" />
+                      lineageId="Package\ODS Dim Partner\Inserted Updated Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3413,7 +3667,7 @@ WHERE [Overseas Agent Code] IS NOT NULL</property>
                     </outputColumn>
                     <outputColumn
                       refId="Package\ODS Dim Supplier\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]"
-                      dataType="dbTimeStamp"
+                      dataType="date"
                       errorOrTruncationOperation="Calcul"
                       errorRowDisposition="FailComponent"
                       lineageId="Package\ODS Dim Supplier\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]"
@@ -3424,13 +3678,13 @@ WHERE [Overseas Agent Code] IS NOT NULL</property>
                           containsID="true"
                           dataType="System.String"
                           description="Expression de colonne dérivée"
-                          name="Expression">[GETUTCDATE]()</property>
+                          name="Expression">(DT_DATE)"31/12/1900 00:00:00"</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Expression claire de colonne dérivée"
                           expressionType="Notify"
-                          name="FriendlyExpression">GETUTCDATE()</property>
+                          name="FriendlyExpression">(DT_DATE)"31/12/1900 00:00:00"</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -3555,7 +3809,7 @@ WHERE [Overseas Agent Code] IS NOT NULL</property>
                       lineageId="Package\ODS Dim Supplier\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSInsertionDate]" />
                     <inputColumn
                       refId="Package\ODS Dim Supplier\ODS Dim Supplier.Inputs[Entrée de destination OLE DB].Columns[ODSUpdateDate]"
-                      cachedDataType="dbTimeStamp"
+                      cachedDataType="date"
                       cachedName="ODSUpdateDate"
                       externalMetadataColumnId="Package\ODS Dim Supplier\ODS Dim Supplier.Inputs[Entrée de destination OLE DB].ExternalColumns[ODSUpdatedDate]"
                       lineageId="Package\ODS Dim Supplier\Insert Update Date.Outputs[Sortie de colonne dérivée].Columns[ODSUpdateDate]" />
@@ -3773,9 +4027,17 @@ WHERE [Consignor Code] IS NOT NULL</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
+          Size="157,42"
+          Id="Package\ODS Dim Agent"
+          TopLeft="232,250" />
+        <NodeLayout
           Size="163,42"
           Id="Package\ODS Dim Branch"
           TopLeft="34,243" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\ODS Dim Carrier"
+          TopLeft="404,28" />
         <NodeLayout
           Size="167,42"
           Id="Package\ODS Dim Country"
@@ -3797,37 +4059,134 @@ WHERE [Consignor Code] IS NOT NULL</property>
           Id="Package\ODS Dim Job"
           TopLeft="219,27" />
         <NodeLayout
-          Size="169,42"
-          Id="Package\ODS Dim Supplier"
-          TopLeft="24,96" />
-        <NodeLayout
-          Size="157,42"
-          Id="Package\ODS Dim Agent"
-          TopLeft="232,250" />
-        <NodeLayout
-          Size="162,42"
-          Id="Package\ODS Dim Carrier"
-          TopLeft="404,28" />
-        <NodeLayout
           Size="164,42"
           Id="Package\ODS Dim Partner"
           TopLeft="416,102" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\ODS Dim Supplier"
+          TopLeft="24,96" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\ODS Dim Agent">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156,42"
+          Id="Package\ODS Dim Agent\STG Dim Agent"
+          TopLeft="55,44" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\ODS Dim Agent\Insert Update Date"
+          TopLeft="135,146" />
+        <EdgeLayout
+          Id="Package\ODS Dim Agent.Paths[Sortie de source OLE DB]"
+          TopLeft="133,86">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="87.5,60"
+              Start="0,0"
+              End="87.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="83.5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="83.5,30"
+                    Point2="87.5,30"
+                    Point3="87.5,34" />
+                  <mssgle:LineSegment
+                    End="87.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="157,42"
+          Id="Package\ODS Dim Agent\ODS Dim Agent"
+          TopLeft="357,77" />
+        <EdgeLayout
+          Id="Package\ODS Dim Agent.Paths[Sortie de colonne dérivée]"
+          TopLeft="247.666666666667,146">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="187.833333333333,-27"
+              Start="0,0"
+              End="187.833333333333,-19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-6.95017381228273" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-6.95017381228273"
+                    Point2="0,-10.9501738122827"
+                    Point3="4,-10.9501738122827" />
+                  <mssgle:LineSegment
+                    End="183.833333333333,-10.9501738122827" />
+                  <mssgle:CubicBezierSegment
+                    Point1="183.833333333333,-10.9501738122827"
+                    Point2="187.833333333333,-10.9501738122827"
+                    Point3="187.833333333333,-14.9501738122827" />
+                  <mssgle:LineSegment
+                    End="187.833333333333,-19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ODS Dim Agent\STG Dim Agent">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\ODS Dim Branch">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="171,42"
+          Id="Package\ODS Dim Branch\Insert Update Date"
+          TopLeft="125,117" />
+        <NodeLayout
           Size="162,42"
           Id="Package\ODS Dim Branch\STG Dim Branch"
           TopLeft="55,38" />
         <NodeLayout
-          Size="171,42"
-          Id="Package\ODS Dim Branch\Insert Update Date"
-          TopLeft="125,117" />
+          Size="177,42"
+          Id="Package\ODS Dim Branch\Destination OLE DB"
+          TopLeft="358,74" />
         <EdgeLayout
           Id="Package\ODS Dim Branch.Paths[Sortie de source OLE DB]"
           TopLeft="136,80">
@@ -3862,10 +4221,6 @@ WHERE [Consignor Code] IS NOT NULL</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="177,42"
-          Id="Package\ODS Dim Branch\Destination OLE DB"
-          TopLeft="358,74" />
         <EdgeLayout
           Id="Package\ODS Dim Branch.Paths[Sortie de colonne dérivée]"
           TopLeft="296,138">
@@ -3925,6 +4280,120 @@ WHERE [Consignor Code] IS NOT NULL</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\ODS Dim Carrier">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="161,42"
+          Id="Package\ODS Dim Carrier\STG Dim Carrier"
+          TopLeft="68,49" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\ODS Dim Carrier\Insert Update Date"
+          TopLeft="200,138" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\ODS Dim Carrier\ODS Dim Carrier"
+          TopLeft="380,45" />
+        <EdgeLayout
+          Id="Package\ODS Dim Carrier.Paths[Sortie de source OLE DB]"
+          TopLeft="148.5,91">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="137,47"
+              Start="0,0"
+              End="137,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.5"
+                    Point2="0,23.5"
+                    Point3="4,23.5" />
+                  <mssgle:LineSegment
+                    End="133,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="133,23.5"
+                    Point2="137,23.5"
+                    Point3="137,27.5" />
+                  <mssgle:LineSegment
+                    End="137,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ODS Dim Carrier.Paths[Sortie de colonne dérivée]"
+          TopLeft="312.666666666667,138">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="148.333333333333,-51"
+              Start="0,0"
+              End="148.333333333333,-43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-16.683661645423" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-16.683661645423"
+                    Point2="0,-20.683661645423"
+                    Point3="4,-20.683661645423" />
+                  <mssgle:LineSegment
+                    End="144.333333333333,-20.683661645423" />
+                  <mssgle:CubicBezierSegment
+                    Point1="144.333333333333,-20.683661645423"
+                    Point2="148.333333333333,-20.683661645423"
+                    Point3="148.333333333333,-24.683661645423" />
+                  <mssgle:LineSegment
+                    End="148.333333333333,-43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ODS Dim Carrier\STG Dim Carrier">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ODS Dim Carrier\ODS Dim Carrier">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\ODS Dim Country">
     <LayoutInfo>
       <GraphLayout
@@ -3937,6 +4406,10 @@ WHERE [Consignor Code] IS NOT NULL</property>
           Size="171,42"
           Id="Package\ODS Dim Country\Insert Update Date"
           TopLeft="149,149" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\ODS Dim Country\ODS Dim Country"
+          TopLeft="338,70" />
         <EdgeLayout
           Id="Package\ODS Dim Country.Paths[Sortie de source OLE DB]"
           TopLeft="133,104">
@@ -3971,10 +4444,6 @@ WHERE [Consignor Code] IS NOT NULL</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="167,42"
-          Id="Package\ODS Dim Country\ODS Dim Country"
-          TopLeft="338,70" />
         <EdgeLayout
           Id="Package\ODS Dim Country.Paths[Sortie de colonne dérivée]"
           TopLeft="261.666666666667,149">
@@ -4022,6 +4491,19 @@ WHERE [Consignor Code] IS NOT NULL</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ODS Dim Country\ODS Dim Country">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -4147,6 +4629,10 @@ WHERE [Consignor Code] IS NOT NULL</property>
           Size="171,42"
           Id="Package\ODS Dim Employee\Insert Update Date"
           TopLeft="89,116" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\ODS Dim Employee\ODS Dim Employee"
+          TopLeft="344,70" />
         <EdgeLayout
           Id="Package\ODS Dim Employee.Paths[Sortie de source OLE DB]"
           TopLeft="114,72">
@@ -4181,10 +4667,6 @@ WHERE [Consignor Code] IS NOT NULL</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="177,42"
-          Id="Package\ODS Dim Employee\ODS Dim Employee"
-          TopLeft="344,70" />
         <EdgeLayout
           Id="Package\ODS Dim Employee.Paths[Sortie de colonne dérivée]"
           TopLeft="260,137">
@@ -4256,6 +4738,10 @@ WHERE [Consignor Code] IS NOT NULL</property>
           Size="171,42"
           Id="Package\ODS Dim Importer\Insert Update Date"
           TopLeft="161,134" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\ODS Dim Importer\ODS Dim Importer"
+          TopLeft="340,55" />
         <EdgeLayout
           Id="Package\ODS Dim Importer.Paths[Sortie de source OLE DB]"
           TopLeft="145,87">
@@ -4290,10 +4776,6 @@ WHERE [Consignor Code] IS NOT NULL</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="169,42"
-          Id="Package\ODS Dim Importer\ODS Dim Importer"
-          TopLeft="340,55" />
         <EdgeLayout
           Id="Package\ODS Dim Importer.Paths[Sortie de colonne dérivée]"
           TopLeft="273.666666666667,134">
@@ -4365,6 +4847,10 @@ WHERE [Consignor Code] IS NOT NULL</property>
           Size="171,42"
           Id="Package\ODS Dim Job\Insert Update Date"
           TopLeft="122,135" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\ODS Dim Job\ODS Dim Job"
+          TopLeft="361,82" />
         <EdgeLayout
           Id="Package\ODS Dim Job.Paths[Sortie de source OLE DB]"
           TopLeft="145.5,94">
@@ -4399,10 +4885,6 @@ WHERE [Consignor Code] IS NOT NULL</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="146,42"
-          Id="Package\ODS Dim Job\ODS Dim Job"
-          TopLeft="361,82" />
         <EdgeLayout
           Id="Package\ODS Dim Job.Paths[Sortie de colonne dérivée]"
           TopLeft="293,156">
@@ -4450,6 +4932,115 @@ WHERE [Consignor Code] IS NOT NULL</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\ODS Dim Job\ODS Dim Job">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\ODS Dim Partner">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\ODS Dim Partner\STG Dim Partner"
+          TopLeft="59,54" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\ODS Dim Partner\Inserted Updated Date"
+          TopLeft="115,143" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\ODS Dim Partner\ODS Dim Partner"
+          TopLeft="365,68" />
+        <EdgeLayout
+          Id="Package\ODS Dim Partner.Paths[Sortie de source OLE DB]"
+          TopLeft="140.5,96">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="69,47"
+              Start="0,0"
+              End="69,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.5"
+                    Point2="0,23.5"
+                    Point3="4,23.5" />
+                  <mssgle:LineSegment
+                    End="65,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="65,23.5"
+                    Point2="69,23.5"
+                    Point3="69,27.5" />
+                  <mssgle:LineSegment
+                    End="69,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ODS Dim Partner.Paths[Sortie de colonne dérivée]"
+          TopLeft="239.666666666667,143">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="207.333333333333,-33"
+              Start="0,0"
+              End="207.333333333333,-25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-9.36621196222456" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-9.36621196222456"
+                    Point2="0,-13.3662119622246"
+                    Point3="4,-13.3662119622246" />
+                  <mssgle:LineSegment
+                    End="203.333333333333,-13.3662119622246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="203.333333333333,-13.3662119622246"
+                    Point2="207.333333333333,-13.3662119622246"
+                    Point3="207.333333333333,-17.3662119622246" />
+                  <mssgle:LineSegment
+                    End="207.333333333333,-25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ODS Dim Partner\STG Dim Partner">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ODS Dim Partner\ODS Dim Partner">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4571,255 +5162,7 @@ WHERE [Consignor Code] IS NOT NULL</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\ODS Dim Country\ODS Dim Country">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\ODS Dim Agent">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="157,42"
-          Id="Package\ODS Dim Agent\Source OLE DB"
-          TopLeft="55,44" />
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\ODS Dim Agent\Source OLE DB">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\ODS Dim Carrier">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="161,42"
-          Id="Package\ODS Dim Carrier\STG Dim Carrier"
-          TopLeft="68,49" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\ODS Dim Carrier\Insert Update Date"
-          TopLeft="200,138" />
-        <EdgeLayout
-          Id="Package\ODS Dim Carrier.Paths[Sortie de source OLE DB]"
-          TopLeft="148.5,91">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="137,47"
-              Start="0,0"
-              End="137,39.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,19.5"
-                    Point2="0,23.5"
-                    Point3="4,23.5" />
-                  <mssgle:LineSegment
-                    End="133,23.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="133,23.5"
-                    Point2="137,23.5"
-                    Point3="137,27.5" />
-                  <mssgle:LineSegment
-                    End="137,39.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="162,42"
-          Id="Package\ODS Dim Carrier\ODS Dim Carrier"
-          TopLeft="380,45" />
-        <EdgeLayout
-          Id="Package\ODS Dim Carrier.Paths[Sortie de colonne dérivée]"
-          TopLeft="312.666666666667,138">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="148.333333333333,-51"
-              Start="0,0"
-              End="148.333333333333,-43.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-16.683661645423" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-16.683661645423"
-                    Point2="0,-20.683661645423"
-                    Point3="4,-20.683661645423" />
-                  <mssgle:LineSegment
-                    End="144.333333333333,-20.683661645423" />
-                  <mssgle:CubicBezierSegment
-                    Point1="144.333333333333,-20.683661645423"
-                    Point2="148.333333333333,-20.683661645423"
-                    Point3="148.333333333333,-24.683661645423" />
-                  <mssgle:LineSegment
-                    End="148.333333333333,-43.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\ODS Dim Carrier\STG Dim Carrier">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\ODS Dim Carrier\ODS Dim Carrier">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\ODS Dim Partner">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="163,42"
-          Id="Package\ODS Dim Partner\STG Dim Partner"
-          TopLeft="59,54" />
-        <NodeLayout
-          Size="189,42"
-          Id="Package\ODS Dim Partner\Inserted Updated Date"
-          TopLeft="115,143" />
-        <EdgeLayout
-          Id="Package\ODS Dim Partner.Paths[Sortie de source OLE DB]"
-          TopLeft="140.5,96">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="69,47"
-              Start="0,0"
-              End="69,39.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,19.5"
-                    Point2="0,23.5"
-                    Point3="4,23.5" />
-                  <mssgle:LineSegment
-                    End="65,23.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="65,23.5"
-                    Point2="69,23.5"
-                    Point3="69,27.5" />
-                  <mssgle:LineSegment
-                    End="69,39.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="164,42"
-          Id="Package\ODS Dim Partner\ODS Dim Partner"
-          TopLeft="365,68" />
-        <EdgeLayout
-          Id="Package\ODS Dim Partner.Paths[Sortie de colonne dérivée]"
-          TopLeft="239.666666666667,143">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="207.333333333333,-33"
-              Start="0,0"
-              End="207.333333333333,-25.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-9.36621196222456" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-9.36621196222456"
-                    Point2="0,-13.3662119622246"
-                    Point3="4,-13.3662119622246" />
-                  <mssgle:LineSegment
-                    End="203.333333333333,-13.3662119622246" />
-                  <mssgle:CubicBezierSegment
-                    Point1="203.333333333333,-13.3662119622246"
-                    Point2="207.333333333333,-13.3662119622246"
-                    Point3="207.333333333333,-17.3662119622246" />
-                  <mssgle:LineSegment
-                    End="207.333333333333,-25.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\ODS Dim Partner\STG Dim Partner">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\ODS Dim Partner\ODS Dim Partner">
+    design-time-name="Package\ODS Dim Agent\ODS Dim Agent">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
