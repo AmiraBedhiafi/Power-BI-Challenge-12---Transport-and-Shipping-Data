@@ -1,0 +1,1091 @@
+﻿<Biml xmlns="http://schemas.varigence.com/biml.xsd">
+    <Connections>
+        <Connection Name="ImportedProjectConnection1" CreateInProject="true" ConnectionString="" />
+        <Connection Name="ImportedProjectConnection2" CreateInProject="true" ConnectionString="" />
+    </Connections>
+    <Packages>
+        <Package Name="Package" Language="None" Id="8e255a96-e858-4741-8e0d-f341892656da" ProtectionLevel="EncryptSensitiveWithUserKey">
+            <Tasks>
+                <Dataflow Name="Tâche de flux de données" Id="dd09b3d4-bafe-434c-b237-dd1b01bc0919">
+                    <Annotations>
+                        <Annotation AnnotationType="Description">Tâche de flux de données</Annotation>
+                    </Annotations>
+                    <Transformations>
+                        <ExcelSource Name="Shipment Source" ConnectionName="ImportedProjectConnection2">
+                            <Annotations>
+                                <Annotation AnnotationType="Description">Source Excel</Annotation>
+                            </Annotations>
+                            <Columns>
+                                <Column SourceColumn="Shipment ID" SortKeyPosition="1" />
+                                <Column SourceColumn="F117" IsUsed="false" />
+                                <Column SourceColumn="F118" IsUsed="false" />
+                                <Column SourceColumn="F119" IsUsed="false" />
+                                <Column SourceColumn="F121" IsUsed="false" />
+                                <Column SourceColumn="F123" IsUsed="false" />
+                                <Column SourceColumn="F125" IsUsed="false" />
+                                <Column SourceColumn="F127" IsUsed="false" />
+                            </Columns>
+                            <ExternalTableInput Table="Shipment Profile$C15:DZ239" />
+                        </ExcelSource>
+                        <MergeJoin Name="Left Outer Join" JoinType="LeftOuterJoin">
+                            <Annotations>
+                                <Annotation AnnotationType="Description">Combine deux flux de données triés en un seul à l&apos;aide de la jointure FULL, LEFT ou INNER. Nous recommandons cette transformation lorsque les flux de données peuvent être triés au niveau de leurs sources.</Annotation>
+                            </Annotations>
+                            <LeftInputPath OutputPathName="Shipment Source.Output" SsisName="Entrée gauche de jointure de fusion">
+                                <Columns>
+                                    <Column SourceColumn="First Load" IsUsed="false" />
+                                    <Column SourceColumn="Last Discharge" IsUsed="false" />
+                                    <Column SourceColumn="Destination Country" IsUsed="false" />
+                                    <Column SourceColumn="Consignor Code" IsUsed="false" />
+                                    <Column SourceColumn="Consignor Name" IsUsed="false" />
+                                    <Column SourceColumn="Consignee Code" IsUsed="false" />
+                                    <Column SourceColumn="Consignee Name" IsUsed="false" />
+                                    <Column SourceColumn="Job Branch" IsUsed="false" />
+                                    <Column SourceColumn="Job Dept" IsUsed="false" />
+                                    <Column SourceColumn="Local Client Code" IsUsed="false" />
+                                    <Column SourceColumn="Local Client Name" IsUsed="false" />
+                                    <Column SourceColumn="Job Sales Rep" IsUsed="false" />
+                                    <Column SourceColumn="Job Operator" IsUsed="false" />
+                                    <Column SourceColumn="Carrier Code" IsUsed="false" />
+                                    <Column SourceColumn="Carrier Name" IsUsed="false" />
+                                    <Column SourceColumn="Overseas Agent Code" IsUsed="false" />
+                                    <Column SourceColumn="Overseas Agent Name" IsUsed="false" />
+                                    <Column SourceColumn="House Ref" IsUsed="false" />
+                                    <Column SourceColumn="Incoterm" IsUsed="false" />
+                                    <Column SourceColumn="Goods Description" IsUsed="false" />
+                                    <Column SourceColumn="Origin ETD" IsUsed="false" />
+                                    <Column SourceColumn="Destination ETA" IsUsed="false" />
+                                    <Column SourceColumn="Weight" IsUsed="false" />
+                                    <Column SourceColumn="Volume" IsUsed="false" />
+                                    <Column SourceColumn="UQ" IsUsed="false" />
+                                    <Column SourceColumn="UQ1" IsUsed="false" />
+                                    <Column SourceColumn="UQ2" IsUsed="false" />
+                                    <Column SourceColumn="UQ3" IsUsed="false" />
+                                    <Column SourceColumn="UQ4" IsUsed="false" />
+                                    <Column SourceColumn="Chargeable" IsUsed="false" />
+                                    <Column SourceColumn="Inner" IsUsed="false" />
+                                    <Column SourceColumn="Outer" IsUsed="false" />
+                                    <Column SourceColumn="Added" IsUsed="false" />
+                                    <Column SourceColumn="Brokerage Job" IsUsed="false" />
+                                    <Column SourceColumn="Is Master/ Lead" IsUsed="false" />
+                                    <Column SourceColumn="Master/ Lead Ref" IsUsed="false" />
+                                    <Column SourceColumn="Import Broker Code" IsUsed="false" />
+                                    <Column SourceColumn="Import Broker Name" IsUsed="false" />
+                                    <Column SourceColumn="Export Broker Code" IsUsed="false" />
+                                    <Column SourceColumn="Export Broker Name" IsUsed="false" />
+                                    <Column SourceColumn="Job Status" IsUsed="false" />
+                                    <Column SourceColumn="Job Opened" IsUsed="false" />
+                                    <Column SourceColumn="Consol ID" IsUsed="false" />
+                                    <Column SourceColumn="ETD First Load" IsUsed="false" />
+                                    <Column SourceColumn="ETA Last Discharge" IsUsed="false" />
+                                    <Column SourceColumn="Master BL" IsUsed="false" />
+                                    <Column SourceColumn="Vessel" IsUsed="false" />
+                                    <Column SourceColumn="Flight/Voyage" IsUsed="false" />
+                                    <Column SourceColumn="TEU" IsUsed="false" />
+                                    <Column SourceColumn="Container Count" IsUsed="false" />
+                                    <Column SourceColumn="20F" IsUsed="false" />
+                                    <Column SourceColumn="20R" IsUsed="false" />
+                                    <Column SourceColumn="20H" IsUsed="false" />
+                                    <Column SourceColumn="40F" IsUsed="false" />
+                                    <Column SourceColumn="40R" IsUsed="false" />
+                                    <Column SourceColumn="40HC" IsUsed="false" />
+                                    <Column SourceColumn="45F" IsUsed="false" />
+                                    <Column SourceColumn="Actual Cartage Delivery" IsUsed="false" />
+                                    <Column SourceColumn="Consol ATD" IsUsed="false" />
+                                    <Column SourceColumn="Direction" IsUsed="false" />
+                                    <Column SourceColumn="Trans" IsUsed="false" />
+                                    <Column SourceColumn="Customs Info" IsUsed="false" />
+                                    <Column SourceColumn="Mode" IsUsed="false" />
+                                    <Column SourceColumn="Origin" IsUsed="false" />
+                                    <Column SourceColumn="Origin Ctry" IsUsed="false" />
+                                    <Column SourceColumn="Destination" IsUsed="false" />
+                                    <Column SourceColumn="Additional Terms" IsUsed="false" />
+                                    <Column SourceColumn="PPD/CCX" IsUsed="false" />
+                                    <Column SourceColumn="Loading Metres" IsUsed="false" />
+                                    <Column SourceColumn="Controlling Customer Code" IsUsed="false" />
+                                    <Column SourceColumn="Controlling Customer Name" IsUsed="false" />
+                                    <Column SourceColumn="Controlling Agent Code" IsUsed="false" />
+                                    <Column SourceColumn="Controlling Agent Name" IsUsed="false" />
+                                    <Column SourceColumn="Transport Job" IsUsed="false" />
+                                    <Column SourceColumn="Recognised Revenue" IsUsed="false" />
+                                    <Column SourceColumn="Recognised WIP" IsUsed="false" />
+                                    <Column SourceColumn="Total Recognised Income (REV+WIP)" IsUsed="false" />
+                                    <Column SourceColumn="Recognised Cost" IsUsed="false" />
+                                    <Column SourceColumn="Recognised Accrual" IsUsed="false" />
+                                    <Column SourceColumn="Total Recognised Expense (CST+ACR)" IsUsed="false" />
+                                    <Column SourceColumn="Job Profit" IsUsed="false" />
+                                    <Column SourceColumn="Load" IsUsed="false" />
+                                    <Column SourceColumn="Discharge" IsUsed="false" />
+                                    <Column SourceColumn="ETD Load" IsUsed="false" />
+                                    <Column SourceColumn="ETA Discharge" IsUsed="false" />
+                                    <Column SourceColumn="Sending Agent Code" IsUsed="false" />
+                                    <Column SourceColumn="Sending Agent Name" IsUsed="false" />
+                                    <Column SourceColumn="Receiving Agent" IsUsed="false" />
+                                    <Column SourceColumn="Receiving Agent Name" IsUsed="false" />
+                                    <Column SourceColumn="Co-loaded With" IsUsed="false" />
+                                    <Column SourceColumn="Co-loader Name" IsUsed="false" />
+                                    <Column SourceColumn="Other" IsUsed="false" />
+                                    <Column SourceColumn="GEN" IsUsed="false" />
+                                    <Column SourceColumn="Total Unrecognised Income(REV+WIP)" IsUsed="false" />
+                                    <Column SourceColumn="Consignor City" IsUsed="false" />
+                                    <Column SourceColumn="Consignor State" IsUsed="false" />
+                                    <Column SourceColumn="Consignor Postcode" IsUsed="false" />
+                                    <Column SourceColumn="Consignee City" IsUsed="false" />
+                                    <Column SourceColumn="Consignee State" IsUsed="false" />
+                                    <Column SourceColumn="Consignee Postcode" IsUsed="false" />
+                                    <Column SourceColumn="Consol ATA" IsUsed="false" />
+                                    <Column SourceColumn="Job Revenue Recognition Date" IsUsed="false" />
+                                    <Column SourceColumn="Local Client AR Settlement Group Code" IsUsed="false" />
+                                    <Column SourceColumn="Local Client AR Settlement Group Name" IsUsed="false" />
+                                    <Column SourceColumn="Job Overseas Agent AR Settlement Group Code" IsUsed="false" />
+                                    <Column SourceColumn="Job Overseas Agent AR Settlement Group Name" IsUsed="false" />
+                                    <Column SourceColumn="Total Unrecognised Expense (CST+ACR)" IsUsed="false" />
+                                    <Column SourceColumn="Total Accrual (Recognised+Unrecognised)" IsUsed="false" />
+                                    <Column SourceColumn="Total Cost (Recognised+Unrecognised)" IsUsed="false" />
+                                    <Column SourceColumn="Total Expense (Recognised+Unrecognised CST+ACR)" IsUsed="false" />
+                                    <Column SourceColumn="Total Income (Recognised+Unrecognised REV+WIP)" IsUsed="false" />
+                                    <Column SourceColumn="Total Revenue (Recognised+Unrecognised)" IsUsed="false" />
+                                    <Column SourceColumn="Total WIP (Recognised+Unrecognised)" IsUsed="false" />
+                                    <Column SourceColumn="House Bill Type" IsUsed="false" />
+                                    <Column SourceColumn="Unrecognised Cost" IsUsed="false" />
+                                    <Column SourceColumn="Shippers Reference" IsUsed="false" />
+                                    <Column SourceColumn="Service Level Code" IsUsed="false" />
+                                    <Column SourceColumn="Unrecognised WIP" IsUsed="false" />
+                                    <Column SourceColumn="Unrecognised Accrual" IsUsed="false" />
+                                    <Column SourceColumn="Unrecognised Revenue" IsUsed="false" />
+                                    <Column SourceColumn="Shipment ID" IsUsed="false" />
+                                </Columns>
+                            </LeftInputPath>
+                            <RightInputPath OutputPathName="Shipment Staging.Output" SsisName="Entrée droite de jointure de fusion">
+                                <Columns>
+                                    <Column SourceColumn="Trans" IsUsed="false" />
+                                    <Column SourceColumn="Customs Info" IsUsed="false" />
+                                    <Column SourceColumn="Mode" IsUsed="false" />
+                                    <Column SourceColumn="Origin" IsUsed="false" />
+                                    <Column SourceColumn="Origin Ctry" IsUsed="false" />
+                                    <Column SourceColumn="Destination" IsUsed="false" />
+                                    <Column SourceColumn="Destination Country" IsUsed="false" />
+                                    <Column SourceColumn="Consignor Code" IsUsed="false" />
+                                    <Column SourceColumn="Consignor Name" IsUsed="false" />
+                                    <Column SourceColumn="Consignee Code" IsUsed="false" />
+                                    <Column SourceColumn="Consignee Name" IsUsed="false" />
+                                    <Column SourceColumn="House Ref" IsUsed="false" />
+                                    <Column SourceColumn="Incoterm" IsUsed="false" />
+                                    <Column SourceColumn="Additional Terms" IsUsed="false" />
+                                    <Column SourceColumn="PPD/CCX" IsUsed="false" />
+                                    <Column SourceColumn="Goods Description" IsUsed="false" />
+                                    <Column SourceColumn="Origin ETD" IsUsed="false" />
+                                    <Column SourceColumn="Destination ETA" IsUsed="false" />
+                                    <Column SourceColumn="Weight" IsUsed="false" />
+                                    <Column SourceColumn="UQ" IsUsed="false" />
+                                    <Column SourceColumn="Volume" IsUsed="false" />
+                                    <Column SourceColumn="UQ1" IsUsed="false" />
+                                    <Column SourceColumn="Loading Metres" IsUsed="false" />
+                                    <Column SourceColumn="Chargeable" IsUsed="false" />
+                                    <Column SourceColumn="UQ2" IsUsed="false" />
+                                    <Column SourceColumn="Inner" IsUsed="false" />
+                                    <Column SourceColumn="UQ3" IsUsed="false" />
+                                    <Column SourceColumn="Outer" IsUsed="false" />
+                                    <Column SourceColumn="UQ4" IsUsed="false" />
+                                    <Column SourceColumn="Added" IsUsed="false" />
+                                    <Column SourceColumn="Controlling Customer Code" IsUsed="false" />
+                                    <Column SourceColumn="Controlling Customer Name" IsUsed="false" />
+                                    <Column SourceColumn="Controlling Agent Code" IsUsed="false" />
+                                    <Column SourceColumn="Controlling Agent Name" IsUsed="false" />
+                                    <Column SourceColumn="Transport Job" IsUsed="false" />
+                                    <Column SourceColumn="Brokerage Job" IsUsed="false" />
+                                    <Column SourceColumn="Is Master/ Lead" IsUsed="false" />
+                                    <Column SourceColumn="Master/ Lead Ref" IsUsed="false" />
+                                    <Column SourceColumn="Import Broker Code" IsUsed="false" />
+                                    <Column SourceColumn="Import Broker Name" IsUsed="false" />
+                                    <Column SourceColumn="Export Broker Code" IsUsed="false" />
+                                    <Column SourceColumn="Export Broker Name" IsUsed="false" />
+                                    <Column SourceColumn="Job Branch" IsUsed="false" />
+                                    <Column SourceColumn="Job Dept" IsUsed="false" />
+                                    <Column SourceColumn="Local Client Code" IsUsed="false" />
+                                    <Column SourceColumn="Local Client Name" IsUsed="false" />
+                                    <Column SourceColumn="Job Sales Rep" IsUsed="false" />
+                                    <Column SourceColumn="Job Operator" IsUsed="false" />
+                                    <Column SourceColumn="Job Status" IsUsed="false" />
+                                    <Column SourceColumn="Job Opened" IsUsed="false" />
+                                    <Column SourceColumn="Recognised Revenue" IsUsed="false" />
+                                    <Column SourceColumn="Recognised WIP" IsUsed="false" />
+                                    <Column SourceColumn="Total Recognised Income (REV+WIP)" IsUsed="false" />
+                                    <Column SourceColumn="Recognised Cost" IsUsed="false" />
+                                    <Column SourceColumn="Recognised Accrual" IsUsed="false" />
+                                    <Column SourceColumn="Total Recognised Expense (CST+ACR)" IsUsed="false" />
+                                    <Column SourceColumn="Job Profit" IsUsed="false" />
+                                    <Column SourceColumn="Consol ID" IsUsed="false" />
+                                    <Column SourceColumn="First Load" IsUsed="false" />
+                                    <Column SourceColumn="Last Discharge" IsUsed="false" />
+                                    <Column SourceColumn="ETD First Load" IsUsed="false" />
+                                    <Column SourceColumn="ETA Last Discharge" IsUsed="false" />
+                                    <Column SourceColumn="Master BL" IsUsed="false" />
+                                    <Column SourceColumn="Vessel" IsUsed="false" />
+                                    <Column SourceColumn="Flight/Voyage" IsUsed="false" />
+                                    <Column SourceColumn="Load" IsUsed="false" />
+                                    <Column SourceColumn="Discharge" IsUsed="false" />
+                                    <Column SourceColumn="ETD Load" IsUsed="false" />
+                                    <Column SourceColumn="ETA Discharge" IsUsed="false" />
+                                    <Column SourceColumn="Sending Agent Code" IsUsed="false" />
+                                    <Column SourceColumn="Sending Agent Name" IsUsed="false" />
+                                    <Column SourceColumn="Receiving Agent" IsUsed="false" />
+                                    <Column SourceColumn="Receiving Agent Name" IsUsed="false" />
+                                    <Column SourceColumn="Co-loaded With" IsUsed="false" />
+                                    <Column SourceColumn="Co-loader Name" IsUsed="false" />
+                                    <Column SourceColumn="Carrier Code" IsUsed="false" />
+                                    <Column SourceColumn="Carrier Name" IsUsed="false" />
+                                    <Column SourceColumn="TEU" IsUsed="false" />
+                                    <Column SourceColumn="Container Count" IsUsed="false" />
+                                    <Column SourceColumn="Other" IsUsed="false" />
+                                    <Column SourceColumn="20F" IsUsed="false" />
+                                    <Column SourceColumn="20R" IsUsed="false" />
+                                    <Column SourceColumn="20H" IsUsed="false" />
+                                    <Column SourceColumn="40F" IsUsed="false" />
+                                    <Column SourceColumn="40R" IsUsed="false" />
+                                    <Column SourceColumn="40HC" IsUsed="false" />
+                                    <Column SourceColumn="45F" IsUsed="false" />
+                                    <Column SourceColumn="GEN" IsUsed="false" />
+                                    <Column SourceColumn="Actual Cartage Delivery" IsUsed="false" />
+                                    <Column SourceColumn="Total Unrecognised Income(REV+WIP)" IsUsed="false" />
+                                    <Column SourceColumn="Consignor City" IsUsed="false" />
+                                    <Column SourceColumn="Consignor State" IsUsed="false" />
+                                    <Column SourceColumn="Consignor Postcode" IsUsed="false" />
+                                    <Column SourceColumn="Consignee City" IsUsed="false" />
+                                    <Column SourceColumn="Consignee State" IsUsed="false" />
+                                    <Column SourceColumn="Consignee Postcode" IsUsed="false" />
+                                    <Column SourceColumn="Consol ATD" IsUsed="false" />
+                                    <Column SourceColumn="Consol ATA" IsUsed="false" />
+                                    <Column SourceColumn="Job Revenue Recognition Date" IsUsed="false" />
+                                    <Column SourceColumn="Direction" IsUsed="false" />
+                                    <Column SourceColumn="Local Client AR Settlement Group Code" IsUsed="false" />
+                                    <Column SourceColumn="Local Client AR Settlement Group Name" IsUsed="false" />
+                                    <Column SourceColumn="Overseas Agent Code" IsUsed="false" />
+                                    <Column SourceColumn="Overseas Agent Name" IsUsed="false" />
+                                    <Column SourceColumn="Job Overseas Agent AR Settlement Group Code" IsUsed="false" />
+                                    <Column SourceColumn="Job Overseas Agent AR Settlement Group Name" IsUsed="false" />
+                                    <Column SourceColumn="Total Unrecognised Expense (CST+ACR)" IsUsed="false" />
+                                    <Column SourceColumn="Total Accrual (Recognised+Unrecognised)" IsUsed="false" />
+                                    <Column SourceColumn="Total Cost (Recognised+Unrecognised)" IsUsed="false" />
+                                    <Column SourceColumn="Total Expense (Recognised+Unrecognised CST+ACR)" IsUsed="false" />
+                                    <Column SourceColumn="Total Income (Recognised+Unrecognised REV+WIP)" IsUsed="false" />
+                                    <Column SourceColumn="Total Revenue (Recognised+Unrecognised)" IsUsed="false" />
+                                    <Column SourceColumn="Total WIP (Recognised+Unrecognised)" IsUsed="false" />
+                                    <Column SourceColumn="House Bill Type" IsUsed="false" />
+                                    <Column SourceColumn="Unrecognised Cost" IsUsed="false" />
+                                    <Column SourceColumn="Shippers Reference" IsUsed="false" />
+                                    <Column SourceColumn="Service Level Code" IsUsed="false" />
+                                    <Column SourceColumn="Unrecognised WIP" IsUsed="false" />
+                                    <Column SourceColumn="Unrecognised Accrual" IsUsed="false" />
+                                    <Column SourceColumn="Unrecognised Revenue" IsUsed="false" />
+                                    <Column SourceColumn="Shipment ID" IsUsed="false" />
+                                </Columns>
+                            </RightInputPath>
+                        </MergeJoin>
+                        <ConditionalSplit Name="Split Records">
+                            <Annotations>
+                                <Annotation AnnotationType="Description">Achemine des lignes de données vers différentes sorties, selon le contexte des données. Utilisez des conditions (expressions SSIS) pour spécifier les lignes qui seront acheminées. Par exemple, séparez les enregistrements qui doivent être nettoyés de ceux qui sont prêts à être chargés ou acheminez uniquement un sous-ensemble d&apos;enregistrements.</Annotation>
+                            </Annotations>
+                            <OutputPaths>
+                                <OutputPath Name="UPDATE">
+                                    <Annotations>
+                                        <Annotation AnnotationType="Description">Sortie 2 de la transformation de fractionnement conditionnel</Annotation>
+                                    </Annotations>
+                                    <Expression>!ISNULL([Shipment ID Table]) &amp;&amp; !ISNULL([Shipment ID File])</Expression>
+                                </OutputPath>
+                                <OutputPath Name="INSERT">
+                                    <Annotations>
+                                        <Annotation AnnotationType="Description">Sortie 1 de la transformation de fractionnement conditionnel</Annotation>
+                                    </Annotations>
+                                    <Expression>ISNULL([Shipment ID Table]) &amp;&amp; !ISNULL([Shipment ID File])</Expression>
+                                </OutputPath>
+                                <OutputPath Name="DELETE">
+                                    <Annotations>
+                                        <Annotation AnnotationType="Description">Sortie 3 de la transformation de fractionnement conditionnel</Annotation>
+                                    </Annotations>
+                                    <Expression>!ISNULL([Shipment ID Table]) &amp;&amp; ISNULL([Shipment ID File])</Expression>
+                                </OutputPath>
+                            </OutputPaths>
+                        </ConditionalSplit>
+                        <DerivedColumns Name="Insert Updated Date">
+                            <Annotations>
+                                <Annotation AnnotationType="Description">Crée de nouvelles valeurs de colonne en appliquant des expressions aux colonnes d&apos;entrée de transformation. Créez de nouvelles colonnes ou remplacez celles qui existent déjà. Par exemple, concaténez les valeurs de la colonne &apos;prénom&apos; et de la colonne &apos;nom&apos; pour créer une colonne &apos;nom complet&apos;.</Annotation>
+                            </Annotations>
+                            <InputPath OutputPathName="Split Records.INSERT" SsisName="Entrée de colonne dérivée">
+                                <Annotations>
+                                    <Annotation AnnotationType="Description">Entrée de la transformation de colonnes dérivées</Annotation>
+                                </Annotations>
+                            </InputPath>
+                            <Columns>
+                                <Column Name="InsertionDate" DataType="DateTime">GETUTCDATE()</Column>
+                                <Column Name="UpdatedDate" DataType="Date">(DT_DATE)&quot;31/12/1900 00:00:00&quot;</Column>
+                                <Column Name="DeletedDate" DataType="Date">(DT_DATE)&quot;31/12/1900 00:00:00&quot;</Column>
+                            </Columns>
+                        </DerivedColumns>
+                        <OleDbDestination Name="Destination OLE DB" ConnectionName="ImportedProjectConnection1">
+                            <Annotations>
+                                <Annotation AnnotationType="Description">Destination OLE DB</Annotation>
+                            </Annotations>
+                            <Columns>
+                                <Column SourceColumn="Shipment ID File" TargetColumn="Shipment ID" />
+                                <Column SourceColumn="First Load File" TargetColumn="First Load" />
+                            </Columns>
+                            <ExternalTableOutput Table="[STG].[ShipmentProfile]" />
+                        </OleDbDestination>
+                        <OleDbSource Name="Shipment Staging" ConnectionName="ImportedProjectConnection1">
+                            <Annotations>
+                                <Annotation AnnotationType="Description">Source OLE DB</Annotation>
+                            </Annotations>
+                            <Columns>
+                                <Column SourceColumn="Shipment ID" SortKeyPosition="1" />
+                            </Columns>
+                            <ExternalTableInput Table="[STG].[ShipmentProfile]" />
+                        </OleDbSource>
+                    </Transformations>
+                </Dataflow>
+                <Dataflow Name="From Excel File To STG Table" Id="cf5e8849-f58c-4f58-9a28-7c929348e483">
+                    <Annotations>
+                        <Annotation AnnotationType="Description">Tâche de flux de données</Annotation>
+                    </Annotations>
+                    <Transformations>
+                        <ExcelSource Name="Shipment Source" ConnectionName="ImportedProjectConnection2">
+                            <Annotations>
+                                <Annotation AnnotationType="Description">Source Excel</Annotation>
+                            </Annotations>
+                            <Columns>
+                                <Column SourceColumn="Shipment ID" SortKeyPosition="1" />
+                                <Column SourceColumn="F117" IsUsed="false" />
+                                <Column SourceColumn="F118" IsUsed="false" />
+                                <Column SourceColumn="F119" IsUsed="false" />
+                                <Column SourceColumn="F121" IsUsed="false" />
+                                <Column SourceColumn="F123" IsUsed="false" />
+                                <Column SourceColumn="F125" IsUsed="false" />
+                                <Column SourceColumn="F127" IsUsed="false" />
+                            </Columns>
+                            <ExternalTableInput Table="Shipment Profile$C15:DZ239" />
+                        </ExcelSource>
+                        <MergeJoin Name="Left Outer Join" JoinType="LeftOuterJoin">
+                            <Annotations>
+                                <Annotation AnnotationType="Description">Combine deux flux de données triés en un seul à l&apos;aide de la jointure FULL, LEFT ou INNER. Nous recommandons cette transformation lorsque les flux de données peuvent être triés au niveau de leurs sources.</Annotation>
+                            </Annotations>
+                            <LeftInputPath OutputPathName="Shipment Source.Output" SsisName="Entrée gauche de jointure de fusion">
+                                <Columns>
+                                    <Column SourceColumn="First Load" IsUsed="false" />
+                                    <Column SourceColumn="Last Discharge" IsUsed="false" />
+                                    <Column SourceColumn="Destination Country" IsUsed="false" />
+                                    <Column SourceColumn="Consignor Code" IsUsed="false" />
+                                    <Column SourceColumn="Consignor Name" IsUsed="false" />
+                                    <Column SourceColumn="Consignee Code" IsUsed="false" />
+                                    <Column SourceColumn="Consignee Name" IsUsed="false" />
+                                    <Column SourceColumn="Job Branch" IsUsed="false" />
+                                    <Column SourceColumn="Job Dept" IsUsed="false" />
+                                    <Column SourceColumn="Local Client Code" IsUsed="false" />
+                                    <Column SourceColumn="Local Client Name" IsUsed="false" />
+                                    <Column SourceColumn="Job Sales Rep" IsUsed="false" />
+                                    <Column SourceColumn="Job Operator" IsUsed="false" />
+                                    <Column SourceColumn="Carrier Code" IsUsed="false" />
+                                    <Column SourceColumn="Carrier Name" IsUsed="false" />
+                                    <Column SourceColumn="Overseas Agent Code" IsUsed="false" />
+                                    <Column SourceColumn="Overseas Agent Name" IsUsed="false" />
+                                    <Column SourceColumn="House Ref" IsUsed="false" />
+                                    <Column SourceColumn="Incoterm" IsUsed="false" />
+                                    <Column SourceColumn="Goods Description" IsUsed="false" />
+                                    <Column SourceColumn="Origin ETD" IsUsed="false" />
+                                    <Column SourceColumn="Destination ETA" IsUsed="false" />
+                                    <Column SourceColumn="Weight" IsUsed="false" />
+                                    <Column SourceColumn="Volume" IsUsed="false" />
+                                    <Column SourceColumn="UQ" IsUsed="false" />
+                                    <Column SourceColumn="UQ1" IsUsed="false" />
+                                    <Column SourceColumn="UQ2" IsUsed="false" />
+                                    <Column SourceColumn="UQ3" IsUsed="false" />
+                                    <Column SourceColumn="UQ4" IsUsed="false" />
+                                    <Column SourceColumn="Chargeable" IsUsed="false" />
+                                    <Column SourceColumn="Inner" IsUsed="false" />
+                                    <Column SourceColumn="Outer" IsUsed="false" />
+                                    <Column SourceColumn="Added" IsUsed="false" />
+                                    <Column SourceColumn="Brokerage Job" IsUsed="false" />
+                                    <Column SourceColumn="Is Master/ Lead" IsUsed="false" />
+                                    <Column SourceColumn="Master/ Lead Ref" IsUsed="false" />
+                                    <Column SourceColumn="Import Broker Code" IsUsed="false" />
+                                    <Column SourceColumn="Import Broker Name" IsUsed="false" />
+                                    <Column SourceColumn="Export Broker Code" IsUsed="false" />
+                                    <Column SourceColumn="Export Broker Name" IsUsed="false" />
+                                    <Column SourceColumn="Job Status" IsUsed="false" />
+                                    <Column SourceColumn="Job Opened" IsUsed="false" />
+                                    <Column SourceColumn="Consol ID" IsUsed="false" />
+                                    <Column SourceColumn="ETD First Load" IsUsed="false" />
+                                    <Column SourceColumn="ETA Last Discharge" IsUsed="false" />
+                                    <Column SourceColumn="Master BL" IsUsed="false" />
+                                    <Column SourceColumn="Vessel" IsUsed="false" />
+                                    <Column SourceColumn="Flight/Voyage" IsUsed="false" />
+                                    <Column SourceColumn="TEU" IsUsed="false" />
+                                    <Column SourceColumn="Container Count" IsUsed="false" />
+                                    <Column SourceColumn="20F" IsUsed="false" />
+                                    <Column SourceColumn="20R" IsUsed="false" />
+                                    <Column SourceColumn="20H" IsUsed="false" />
+                                    <Column SourceColumn="40F" IsUsed="false" />
+                                    <Column SourceColumn="40R" IsUsed="false" />
+                                    <Column SourceColumn="40HC" IsUsed="false" />
+                                    <Column SourceColumn="45F" IsUsed="false" />
+                                    <Column SourceColumn="Actual Cartage Delivery" IsUsed="false" />
+                                    <Column SourceColumn="Consol ATD" IsUsed="false" />
+                                    <Column SourceColumn="Direction" IsUsed="false" />
+                                    <Column SourceColumn="Trans" IsUsed="false" />
+                                    <Column SourceColumn="Customs Info" IsUsed="false" />
+                                    <Column SourceColumn="Mode" IsUsed="false" />
+                                    <Column SourceColumn="Origin" IsUsed="false" />
+                                    <Column SourceColumn="Origin Ctry" IsUsed="false" />
+                                    <Column SourceColumn="Destination" IsUsed="false" />
+                                    <Column SourceColumn="Additional Terms" IsUsed="false" />
+                                    <Column SourceColumn="PPD/CCX" IsUsed="false" />
+                                    <Column SourceColumn="Loading Metres" IsUsed="false" />
+                                    <Column SourceColumn="Controlling Customer Code" IsUsed="false" />
+                                    <Column SourceColumn="Controlling Customer Name" IsUsed="false" />
+                                    <Column SourceColumn="Controlling Agent Code" IsUsed="false" />
+                                    <Column SourceColumn="Controlling Agent Name" IsUsed="false" />
+                                    <Column SourceColumn="Transport Job" IsUsed="false" />
+                                    <Column SourceColumn="Recognised Revenue" IsUsed="false" />
+                                    <Column SourceColumn="Recognised WIP" IsUsed="false" />
+                                    <Column SourceColumn="Total Recognised Income (REV+WIP)" IsUsed="false" />
+                                    <Column SourceColumn="Recognised Cost" IsUsed="false" />
+                                    <Column SourceColumn="Recognised Accrual" IsUsed="false" />
+                                    <Column SourceColumn="Total Recognised Expense (CST+ACR)" IsUsed="false" />
+                                    <Column SourceColumn="Job Profit" IsUsed="false" />
+                                    <Column SourceColumn="Load" IsUsed="false" />
+                                    <Column SourceColumn="Discharge" IsUsed="false" />
+                                    <Column SourceColumn="ETD Load" IsUsed="false" />
+                                    <Column SourceColumn="ETA Discharge" IsUsed="false" />
+                                    <Column SourceColumn="Sending Agent Code" IsUsed="false" />
+                                    <Column SourceColumn="Sending Agent Name" IsUsed="false" />
+                                    <Column SourceColumn="Receiving Agent" IsUsed="false" />
+                                    <Column SourceColumn="Receiving Agent Name" IsUsed="false" />
+                                    <Column SourceColumn="Co-loaded With" IsUsed="false" />
+                                    <Column SourceColumn="Co-loader Name" IsUsed="false" />
+                                    <Column SourceColumn="Other" IsUsed="false" />
+                                    <Column SourceColumn="GEN" IsUsed="false" />
+                                    <Column SourceColumn="Total Unrecognised Income(REV+WIP)" IsUsed="false" />
+                                    <Column SourceColumn="Consignor City" IsUsed="false" />
+                                    <Column SourceColumn="Consignor State" IsUsed="false" />
+                                    <Column SourceColumn="Consignor Postcode" IsUsed="false" />
+                                    <Column SourceColumn="Consignee City" IsUsed="false" />
+                                    <Column SourceColumn="Consignee State" IsUsed="false" />
+                                    <Column SourceColumn="Consignee Postcode" IsUsed="false" />
+                                    <Column SourceColumn="Consol ATA" IsUsed="false" />
+                                    <Column SourceColumn="Job Revenue Recognition Date" IsUsed="false" />
+                                    <Column SourceColumn="Local Client AR Settlement Group Code" IsUsed="false" />
+                                    <Column SourceColumn="Local Client AR Settlement Group Name" IsUsed="false" />
+                                    <Column SourceColumn="Job Overseas Agent AR Settlement Group Code" IsUsed="false" />
+                                    <Column SourceColumn="Job Overseas Agent AR Settlement Group Name" IsUsed="false" />
+                                    <Column SourceColumn="Total Unrecognised Expense (CST+ACR)" IsUsed="false" />
+                                    <Column SourceColumn="Total Accrual (Recognised+Unrecognised)" IsUsed="false" />
+                                    <Column SourceColumn="Total Cost (Recognised+Unrecognised)" IsUsed="false" />
+                                    <Column SourceColumn="Total Expense (Recognised+Unrecognised CST+ACR)" IsUsed="false" />
+                                    <Column SourceColumn="Total Income (Recognised+Unrecognised REV+WIP)" IsUsed="false" />
+                                    <Column SourceColumn="Total Revenue (Recognised+Unrecognised)" IsUsed="false" />
+                                    <Column SourceColumn="Total WIP (Recognised+Unrecognised)" IsUsed="false" />
+                                    <Column SourceColumn="House Bill Type" IsUsed="false" />
+                                    <Column SourceColumn="Unrecognised Cost" IsUsed="false" />
+                                    <Column SourceColumn="Shippers Reference" IsUsed="false" />
+                                    <Column SourceColumn="Service Level Code" IsUsed="false" />
+                                    <Column SourceColumn="Unrecognised WIP" IsUsed="false" />
+                                    <Column SourceColumn="Unrecognised Accrual" IsUsed="false" />
+                                    <Column SourceColumn="Unrecognised Revenue" IsUsed="false" />
+                                    <Column SourceColumn="Shipment ID" IsUsed="false" />
+                                </Columns>
+                            </LeftInputPath>
+                            <RightInputPath OutputPathName="Shipment Staging.Output" SsisName="Entrée droite de jointure de fusion">
+                                <Columns>
+                                    <Column SourceColumn="Trans" IsUsed="false" />
+                                    <Column SourceColumn="Customs Info" IsUsed="false" />
+                                    <Column SourceColumn="Mode" IsUsed="false" />
+                                    <Column SourceColumn="Origin" IsUsed="false" />
+                                    <Column SourceColumn="Origin Ctry" IsUsed="false" />
+                                    <Column SourceColumn="Destination" IsUsed="false" />
+                                    <Column SourceColumn="Destination Country" IsUsed="false" />
+                                    <Column SourceColumn="Consignor Code" IsUsed="false" />
+                                    <Column SourceColumn="Consignor Name" IsUsed="false" />
+                                    <Column SourceColumn="Consignee Code" IsUsed="false" />
+                                    <Column SourceColumn="Consignee Name" IsUsed="false" />
+                                    <Column SourceColumn="House Ref" IsUsed="false" />
+                                    <Column SourceColumn="Incoterm" IsUsed="false" />
+                                    <Column SourceColumn="Additional Terms" IsUsed="false" />
+                                    <Column SourceColumn="PPD/CCX" IsUsed="false" />
+                                    <Column SourceColumn="Goods Description" IsUsed="false" />
+                                    <Column SourceColumn="Origin ETD" IsUsed="false" />
+                                    <Column SourceColumn="Destination ETA" IsUsed="false" />
+                                    <Column SourceColumn="Weight" IsUsed="false" />
+                                    <Column SourceColumn="UQ" IsUsed="false" />
+                                    <Column SourceColumn="Volume" IsUsed="false" />
+                                    <Column SourceColumn="UQ1" IsUsed="false" />
+                                    <Column SourceColumn="Loading Metres" IsUsed="false" />
+                                    <Column SourceColumn="Chargeable" IsUsed="false" />
+                                    <Column SourceColumn="UQ2" IsUsed="false" />
+                                    <Column SourceColumn="Inner" IsUsed="false" />
+                                    <Column SourceColumn="UQ3" IsUsed="false" />
+                                    <Column SourceColumn="Outer" IsUsed="false" />
+                                    <Column SourceColumn="UQ4" IsUsed="false" />
+                                    <Column SourceColumn="Added" IsUsed="false" />
+                                    <Column SourceColumn="Controlling Customer Code" IsUsed="false" />
+                                    <Column SourceColumn="Controlling Customer Name" IsUsed="false" />
+                                    <Column SourceColumn="Controlling Agent Code" IsUsed="false" />
+                                    <Column SourceColumn="Controlling Agent Name" IsUsed="false" />
+                                    <Column SourceColumn="Transport Job" IsUsed="false" />
+                                    <Column SourceColumn="Brokerage Job" IsUsed="false" />
+                                    <Column SourceColumn="Is Master/ Lead" IsUsed="false" />
+                                    <Column SourceColumn="Master/ Lead Ref" IsUsed="false" />
+                                    <Column SourceColumn="Import Broker Code" IsUsed="false" />
+                                    <Column SourceColumn="Import Broker Name" IsUsed="false" />
+                                    <Column SourceColumn="Export Broker Code" IsUsed="false" />
+                                    <Column SourceColumn="Export Broker Name" IsUsed="false" />
+                                    <Column SourceColumn="Job Branch" IsUsed="false" />
+                                    <Column SourceColumn="Job Dept" IsUsed="false" />
+                                    <Column SourceColumn="Local Client Code" IsUsed="false" />
+                                    <Column SourceColumn="Local Client Name" IsUsed="false" />
+                                    <Column SourceColumn="Job Sales Rep" IsUsed="false" />
+                                    <Column SourceColumn="Job Operator" IsUsed="false" />
+                                    <Column SourceColumn="Job Status" IsUsed="false" />
+                                    <Column SourceColumn="Job Opened" IsUsed="false" />
+                                    <Column SourceColumn="Recognised Revenue" IsUsed="false" />
+                                    <Column SourceColumn="Recognised WIP" IsUsed="false" />
+                                    <Column SourceColumn="Total Recognised Income (REV+WIP)" IsUsed="false" />
+                                    <Column SourceColumn="Recognised Cost" IsUsed="false" />
+                                    <Column SourceColumn="Recognised Accrual" IsUsed="false" />
+                                    <Column SourceColumn="Total Recognised Expense (CST+ACR)" IsUsed="false" />
+                                    <Column SourceColumn="Job Profit" IsUsed="false" />
+                                    <Column SourceColumn="Consol ID" IsUsed="false" />
+                                    <Column SourceColumn="First Load" IsUsed="false" />
+                                    <Column SourceColumn="Last Discharge" IsUsed="false" />
+                                    <Column SourceColumn="ETD First Load" IsUsed="false" />
+                                    <Column SourceColumn="ETA Last Discharge" IsUsed="false" />
+                                    <Column SourceColumn="Master BL" IsUsed="false" />
+                                    <Column SourceColumn="Vessel" IsUsed="false" />
+                                    <Column SourceColumn="Flight/Voyage" IsUsed="false" />
+                                    <Column SourceColumn="Load" IsUsed="false" />
+                                    <Column SourceColumn="Discharge" IsUsed="false" />
+                                    <Column SourceColumn="ETD Load" IsUsed="false" />
+                                    <Column SourceColumn="ETA Discharge" IsUsed="false" />
+                                    <Column SourceColumn="Sending Agent Code" IsUsed="false" />
+                                    <Column SourceColumn="Sending Agent Name" IsUsed="false" />
+                                    <Column SourceColumn="Receiving Agent" IsUsed="false" />
+                                    <Column SourceColumn="Receiving Agent Name" IsUsed="false" />
+                                    <Column SourceColumn="Co-loaded With" IsUsed="false" />
+                                    <Column SourceColumn="Co-loader Name" IsUsed="false" />
+                                    <Column SourceColumn="Carrier Code" IsUsed="false" />
+                                    <Column SourceColumn="Carrier Name" IsUsed="false" />
+                                    <Column SourceColumn="TEU" IsUsed="false" />
+                                    <Column SourceColumn="Container Count" IsUsed="false" />
+                                    <Column SourceColumn="Other" IsUsed="false" />
+                                    <Column SourceColumn="20F" IsUsed="false" />
+                                    <Column SourceColumn="20R" IsUsed="false" />
+                                    <Column SourceColumn="20H" IsUsed="false" />
+                                    <Column SourceColumn="40F" IsUsed="false" />
+                                    <Column SourceColumn="40R" IsUsed="false" />
+                                    <Column SourceColumn="40HC" IsUsed="false" />
+                                    <Column SourceColumn="45F" IsUsed="false" />
+                                    <Column SourceColumn="GEN" IsUsed="false" />
+                                    <Column SourceColumn="Actual Cartage Delivery" IsUsed="false" />
+                                    <Column SourceColumn="Total Unrecognised Income(REV+WIP)" IsUsed="false" />
+                                    <Column SourceColumn="Consignor City" IsUsed="false" />
+                                    <Column SourceColumn="Consignor State" IsUsed="false" />
+                                    <Column SourceColumn="Consignor Postcode" IsUsed="false" />
+                                    <Column SourceColumn="Consignee City" IsUsed="false" />
+                                    <Column SourceColumn="Consignee State" IsUsed="false" />
+                                    <Column SourceColumn="Consignee Postcode" IsUsed="false" />
+                                    <Column SourceColumn="Consol ATD" IsUsed="false" />
+                                    <Column SourceColumn="Consol ATA" IsUsed="false" />
+                                    <Column SourceColumn="Job Revenue Recognition Date" IsUsed="false" />
+                                    <Column SourceColumn="Direction" IsUsed="false" />
+                                    <Column SourceColumn="Local Client AR Settlement Group Code" IsUsed="false" />
+                                    <Column SourceColumn="Local Client AR Settlement Group Name" IsUsed="false" />
+                                    <Column SourceColumn="Overseas Agent Code" IsUsed="false" />
+                                    <Column SourceColumn="Overseas Agent Name" IsUsed="false" />
+                                    <Column SourceColumn="Job Overseas Agent AR Settlement Group Code" IsUsed="false" />
+                                    <Column SourceColumn="Job Overseas Agent AR Settlement Group Name" IsUsed="false" />
+                                    <Column SourceColumn="Total Unrecognised Expense (CST+ACR)" IsUsed="false" />
+                                    <Column SourceColumn="Total Accrual (Recognised+Unrecognised)" IsUsed="false" />
+                                    <Column SourceColumn="Total Cost (Recognised+Unrecognised)" IsUsed="false" />
+                                    <Column SourceColumn="Total Expense (Recognised+Unrecognised CST+ACR)" IsUsed="false" />
+                                    <Column SourceColumn="Total Income (Recognised+Unrecognised REV+WIP)" IsUsed="false" />
+                                    <Column SourceColumn="Total Revenue (Recognised+Unrecognised)" IsUsed="false" />
+                                    <Column SourceColumn="Total WIP (Recognised+Unrecognised)" IsUsed="false" />
+                                    <Column SourceColumn="House Bill Type" IsUsed="false" />
+                                    <Column SourceColumn="Unrecognised Cost" IsUsed="false" />
+                                    <Column SourceColumn="Shippers Reference" IsUsed="false" />
+                                    <Column SourceColumn="Service Level Code" IsUsed="false" />
+                                    <Column SourceColumn="Unrecognised WIP" IsUsed="false" />
+                                    <Column SourceColumn="Unrecognised Accrual" IsUsed="false" />
+                                    <Column SourceColumn="Unrecognised Revenue" IsUsed="false" />
+                                    <Column SourceColumn="Shipment ID" IsUsed="false" />
+                                </Columns>
+                            </RightInputPath>
+                        </MergeJoin>
+                        <ConditionalSplit Name="Split Records">
+                            <Annotations>
+                                <Annotation AnnotationType="Description">Achemine des lignes de données vers différentes sorties, selon le contexte des données. Utilisez des conditions (expressions SSIS) pour spécifier les lignes qui seront acheminées. Par exemple, séparez les enregistrements qui doivent être nettoyés de ceux qui sont prêts à être chargés ou acheminez uniquement un sous-ensemble d&apos;enregistrements.</Annotation>
+                            </Annotations>
+                            <OutputPaths>
+                                <OutputPath Name="UPDATE">
+                                    <Annotations>
+                                        <Annotation AnnotationType="Description">Sortie 2 de la transformation de fractionnement conditionnel</Annotation>
+                                    </Annotations>
+                                    <Expression>!ISNULL([Shipment ID Table]) &amp;&amp; !ISNULL([Shipment ID File])</Expression>
+                                </OutputPath>
+                                <OutputPath Name="INSERT">
+                                    <Annotations>
+                                        <Annotation AnnotationType="Description">Sortie 1 de la transformation de fractionnement conditionnel</Annotation>
+                                    </Annotations>
+                                    <Expression>ISNULL([Shipment ID Table]) &amp;&amp; !ISNULL([Shipment ID File])</Expression>
+                                </OutputPath>
+                                <OutputPath Name="DELETE">
+                                    <Annotations>
+                                        <Annotation AnnotationType="Description">Sortie 3 de la transformation de fractionnement conditionnel</Annotation>
+                                    </Annotations>
+                                    <Expression>!ISNULL([Shipment ID Table]) &amp;&amp; ISNULL([Shipment ID File])</Expression>
+                                </OutputPath>
+                            </OutputPaths>
+                        </ConditionalSplit>
+                        <OleDbCommand Name="Update Deleted Column" ConnectionName="ImportedProjectConnection1">
+                            <Annotations>
+                                <Annotation AnnotationType="Description">Exécute une instruction SQL pour chaque ligne d&apos;un flux de données. Par exemple, appelez une procédure stockée &apos;nouvelle configuration d&apos;employé&apos; pour chaque ligne de la table &apos;nouveaux employés&apos;. Remarque : l&apos;exécution d&apos;une instruction SQL pour chaque ligne d&apos;un flux de données volumineux peut prendre beaucoup de temps.</Annotation>
+                            </Annotations>
+                            <InputPath OutputPathName="Split Records.DELETE" SsisName="Entrée de commande OLE DB" />
+                            <Parameters>
+                                <Parameter SourceColumn="Shipment ID Table" TargetColumn="Param_0" DataType="StringFixedLength" Length="255" />
+                            </Parameters>
+                            <DirectInput>UPDATE [STG].[ShipmentProfile]
+   SET [DeletedDate] = GETUTCDATE()
+ WHERE [Shipment ID] = ?</DirectInput>
+                        </OleDbCommand>
+                        <DerivedColumns Name="Insert Updated Date">
+                            <Annotations>
+                                <Annotation AnnotationType="Description">Crée de nouvelles valeurs de colonne en appliquant des expressions aux colonnes d&apos;entrée de transformation. Créez de nouvelles colonnes ou remplacez celles qui existent déjà. Par exemple, concaténez les valeurs de la colonne &apos;prénom&apos; et de la colonne &apos;nom&apos; pour créer une colonne &apos;nom complet&apos;.</Annotation>
+                            </Annotations>
+                            <InputPath OutputPathName="Split Records.INSERT" SsisName="Entrée de colonne dérivée">
+                                <Annotations>
+                                    <Annotation AnnotationType="Description">Entrée de la transformation de colonnes dérivées</Annotation>
+                                </Annotations>
+                            </InputPath>
+                            <Columns>
+                                <Column Name="InsertionDate" DataType="DateTime">GETUTCDATE()</Column>
+                                <Column Name="UpdatedDate" DataType="Date">(DT_DATE)&quot;31/12/1900 00:00:00&quot;</Column>
+                                <Column Name="DeletedDate" DataType="Date">(DT_DATE)&quot;31/12/1900 00:00:00&quot;</Column>
+                            </Columns>
+                        </DerivedColumns>
+                        <OleDbDestination Name="Insert New Records" ConnectionName="ImportedProjectConnection1">
+                            <Annotations>
+                                <Annotation AnnotationType="Description">Destination OLE DB</Annotation>
+                            </Annotations>
+                            <Columns>
+                                <Column SourceColumn="Shipment ID File" TargetColumn="Shipment ID" />
+                                <Column SourceColumn="First Load File" TargetColumn="First Load" />
+                                <Column SourceColumn="Last Discharge File" TargetColumn="Last Discharge" />
+                                <Column SourceColumn="Destination Country File" TargetColumn="Destination Country" />
+                                <Column SourceColumn="Consignor Code File" TargetColumn="Consignor Code" />
+                                <Column SourceColumn="Consignor Name File" TargetColumn="Consignor Name" />
+                                <Column SourceColumn="Consignee Code File" TargetColumn="Consignee Code" />
+                                <Column SourceColumn="Consignee Name File" TargetColumn="Consignee Name" />
+                                <Column SourceColumn="Job Branch File" TargetColumn="Job Branch" />
+                                <Column SourceColumn="Job Dept File" TargetColumn="Job Dept" />
+                                <Column SourceColumn="Local Client Code File" TargetColumn="Local Client Code" />
+                                <Column SourceColumn="Local Client Name File" TargetColumn="Local Client Name" />
+                                <Column SourceColumn="Job Sales Rep File" TargetColumn="Job Sales Rep" />
+                                <Column SourceColumn="Job Operator File" TargetColumn="Job Operator" />
+                                <Column SourceColumn="Carrier Code File" TargetColumn="Carrier Code" />
+                                <Column SourceColumn="Carrier Name File" TargetColumn="Carrier Name" />
+                                <Column SourceColumn="Overseas Agent Code File" TargetColumn="Overseas Agent Code" />
+                                <Column SourceColumn="Overseas Agent Name File" TargetColumn="Overseas Agent Name" />
+                                <Column SourceColumn="House Ref File" TargetColumn="House Ref" />
+                                <Column SourceColumn="Incoterm File" TargetColumn="Incoterm" />
+                                <Column SourceColumn="Goods Description File" TargetColumn="Goods Description" />
+                                <Column SourceColumn="Origin ETD File" TargetColumn="Origin ETD" />
+                                <Column SourceColumn="Destination ETA File" TargetColumn="Destination ETA" />
+                                <Column SourceColumn="Weight File" TargetColumn="Weight" />
+                                <Column SourceColumn="Volume File" TargetColumn="Volume" />
+                                <Column SourceColumn="UQ File" TargetColumn="UQ" />
+                                <Column SourceColumn="UQ1 File" TargetColumn="UQ1" />
+                                <Column SourceColumn="UQ2 File" TargetColumn="UQ2" />
+                                <Column SourceColumn="UQ3 File" TargetColumn="UQ3" />
+                                <Column SourceColumn="UQ4 File" TargetColumn="UQ4" />
+                                <Column SourceColumn="Chargeable File" TargetColumn="Chargeable" />
+                                <Column SourceColumn="Inner File" TargetColumn="Inner" />
+                                <Column SourceColumn="Outer File" TargetColumn="Outer" />
+                                <Column SourceColumn="Added File" TargetColumn="Added" />
+                                <Column SourceColumn="Brokerage Job File" TargetColumn="Brokerage Job" />
+                                <Column SourceColumn="Is Master/ Lead File" TargetColumn="Is Master/ Lead" />
+                                <Column SourceColumn="Master/ Lead Ref File" TargetColumn="Master/ Lead Ref" />
+                                <Column SourceColumn="Import Broker Code File" TargetColumn="Import Broker Code" />
+                                <Column SourceColumn="Import Broker Name File" TargetColumn="Import Broker Name" />
+                                <Column SourceColumn="Export Broker Code File" TargetColumn="Export Broker Code" />
+                                <Column SourceColumn="Export Broker Name File" TargetColumn="Export Broker Name" />
+                                <Column SourceColumn="Job Status File" TargetColumn="Job Status" />
+                                <Column SourceColumn="Job Opened File" TargetColumn="Job Opened" />
+                                <Column SourceColumn="Consol ID File" TargetColumn="Consol ID" />
+                                <Column SourceColumn="ETD First Load File" TargetColumn="ETD First Load" />
+                                <Column SourceColumn="ETA Last Discharge File" TargetColumn="ETA Last Discharge" />
+                                <Column SourceColumn="Master BL File" TargetColumn="Master BL" />
+                                <Column SourceColumn="Vessel File" TargetColumn="Vessel" />
+                                <Column SourceColumn="Flight/Voyage File" TargetColumn="Flight/Voyage" />
+                                <Column SourceColumn="TEU File" TargetColumn="TEU" />
+                                <Column SourceColumn="Container Count File" TargetColumn="Container Count" />
+                                <Column SourceColumn="20F File" TargetColumn="20F" />
+                                <Column SourceColumn="20R File" TargetColumn="20R" />
+                                <Column SourceColumn="20H File" TargetColumn="20H" />
+                                <Column SourceColumn="40F File" TargetColumn="40F" />
+                                <Column SourceColumn="40R File" TargetColumn="40R" />
+                                <Column SourceColumn="40HC File" TargetColumn="40HC" />
+                                <Column SourceColumn="45F File" TargetColumn="45F" />
+                                <Column SourceColumn="Actual Cartage Delivery File" TargetColumn="Actual Cartage Delivery" />
+                                <Column SourceColumn="Consol ATD File" TargetColumn="Consol ATD" />
+                                <Column SourceColumn="Direction File" TargetColumn="Direction" />
+                                <Column SourceColumn="Trans File" TargetColumn="Trans" />
+                                <Column SourceColumn="Customs Info File" TargetColumn="Customs Info" />
+                                <Column SourceColumn="Mode File" TargetColumn="Mode" />
+                                <Column SourceColumn="Origin File" TargetColumn="Origin" />
+                                <Column SourceColumn="Origin Ctry File" TargetColumn="Origin Ctry" />
+                                <Column SourceColumn="Destination File" TargetColumn="Destination" />
+                                <Column SourceColumn="Additional Terms File" TargetColumn="Additional Terms" />
+                                <Column SourceColumn="PPD/CCX File" TargetColumn="PPD/CCX" />
+                                <Column SourceColumn="Loading Metres File" TargetColumn="Loading Metres" />
+                                <Column SourceColumn="Controlling Customer Code File" TargetColumn="Controlling Customer Code" />
+                                <Column SourceColumn="Controlling Customer Name File" TargetColumn="Controlling Customer Name" />
+                                <Column SourceColumn="Controlling Agent Code File" TargetColumn="Controlling Agent Code" />
+                                <Column SourceColumn="Controlling Agent Name File" TargetColumn="Controlling Agent Name" />
+                                <Column SourceColumn="Transport Job File" TargetColumn="Transport Job" />
+                                <Column SourceColumn="Recognised Revenue File" TargetColumn="Recognised Revenue" />
+                                <Column SourceColumn="Recognised WIP File" TargetColumn="Recognised WIP" />
+                                <Column SourceColumn="Total Recognised Income (REV+WIP) File" TargetColumn="Total Recognised Income (REV+WIP)" />
+                                <Column SourceColumn="Recognised Cost File" TargetColumn="Recognised Cost" />
+                                <Column SourceColumn="Recognised Accrual File" TargetColumn="Recognised Accrual" />
+                                <Column SourceColumn="Total Recognised Expense (CST+ACR) File" TargetColumn="Total Recognised Expense (CST+ACR)" />
+                                <Column SourceColumn="Job Profit File" TargetColumn="Job Profit" />
+                                <Column SourceColumn="Load File" TargetColumn="Load" />
+                                <Column SourceColumn="Discharge File" TargetColumn="Discharge" />
+                                <Column SourceColumn="ETD Load File" TargetColumn="ETD Load" />
+                                <Column SourceColumn="ETA Discharge File" TargetColumn="ETA Discharge" />
+                                <Column SourceColumn="Sending Agent Code File" TargetColumn="Sending Agent Code" />
+                                <Column SourceColumn="Sending Agent Name File" TargetColumn="Sending Agent Name" />
+                                <Column SourceColumn="Receiving Agent File" TargetColumn="Receiving Agent" />
+                                <Column SourceColumn="Receiving Agent Name File" TargetColumn="Receiving Agent Name" />
+                                <Column SourceColumn="Co-loaded With File" TargetColumn="Co-loaded With" />
+                                <Column SourceColumn="Co-loader Name File" TargetColumn="Co-loader Name" />
+                                <Column SourceColumn="Other File" TargetColumn="Other" />
+                                <Column SourceColumn="GEN File" TargetColumn="GEN" />
+                                <Column SourceColumn="Total Unrecognised Income(REV+WIP) File" TargetColumn="Total Unrecognised Income(REV+WIP)" />
+                                <Column SourceColumn="Consignor City File" TargetColumn="Consignor City" />
+                                <Column SourceColumn="Consignor State File" TargetColumn="Consignor State" />
+                                <Column SourceColumn="Consignor Postcode File" TargetColumn="Consignor Postcode" />
+                                <Column SourceColumn="Consignee City File" TargetColumn="Consignee City" />
+                                <Column SourceColumn="Consignee State File" TargetColumn="Consignee State" />
+                                <Column SourceColumn="Consignee Postcode File" TargetColumn="Consignee Postcode" />
+                                <Column SourceColumn="Consol ATA File" TargetColumn="Consol ATA" />
+                                <Column SourceColumn="Job Revenue Recognition Date File" TargetColumn="Job Revenue Recognition Date" />
+                                <Column SourceColumn="Local Client AR Settlement Group Code File" TargetColumn="Local Client AR Settlement Group Code" />
+                                <Column SourceColumn="Local Client AR Settlement Group Name File" TargetColumn="Local Client AR Settlement Group Name" />
+                                <Column SourceColumn="Job Overseas Agent AR Settlement Group Code File" TargetColumn="Job Overseas Agent AR Settlement Group Code" />
+                                <Column SourceColumn="Job Overseas Agent AR Settlement Group Name File" TargetColumn="Job Overseas Agent AR Settlement Group Name" />
+                                <Column SourceColumn="Total Unrecognised Expense (CST+ACR) File" TargetColumn="Total Unrecognised Expense (CST+ACR)" />
+                                <Column SourceColumn="Total Accrual (Recognised+Unrecognised) File" TargetColumn="Total Accrual (Recognised+Unrecognised)" />
+                                <Column SourceColumn="Total Cost (Recognised+Unrecognised) File" TargetColumn="Total Cost (Recognised+Unrecognised)" />
+                                <Column SourceColumn="Total Expense (Recognised+Unrecognised CST+ACR) File" TargetColumn="Total Expense (Recognised+Unrecognised CST+ACR)" />
+                                <Column SourceColumn="Total Income (Recognised+Unrecognised REV+WIP) File" TargetColumn="Total Income (Recognised+Unrecognised REV+WIP)" />
+                                <Column SourceColumn="Total Revenue (Recognised+Unrecognised) File" TargetColumn="Total Revenue (Recognised+Unrecognised)" />
+                                <Column SourceColumn="Total WIP (Recognised+Unrecognised) File" TargetColumn="Total WIP (Recognised+Unrecognised)" />
+                                <Column SourceColumn="House Bill Type File" TargetColumn="House Bill Type" />
+                                <Column SourceColumn="Unrecognised Cost File" TargetColumn="Unrecognised Cost" />
+                                <Column SourceColumn="Shippers Reference File" TargetColumn="Shippers Reference" />
+                                <Column SourceColumn="Service Level Code File" TargetColumn="Service Level Code" />
+                                <Column SourceColumn="Unrecognised WIP File" TargetColumn="Unrecognised WIP" />
+                                <Column SourceColumn="Unrecognised Accrual File" TargetColumn="Unrecognised Accrual" />
+                                <Column SourceColumn="Unrecognised Revenue File" TargetColumn="Unrecognised Revenue" />
+                            </Columns>
+                            <ExternalTableOutput Table="[STG].[ShipmentProfile]" />
+                        </OleDbDestination>
+                        <ConditionalSplit Name="Find Updated Records">
+                            <Annotations>
+                                <Annotation AnnotationType="Description">Achemine des lignes de données vers différentes sorties, selon le contexte des données. Utilisez des conditions (expressions SSIS) pour spécifier les lignes qui seront acheminées. Par exemple, séparez les enregistrements qui doivent être nettoyés de ceux qui sont prêts à être chargés ou acheminez uniquement un sous-ensemble d&apos;enregistrements.</Annotation>
+                            </Annotations>
+                            <InputPath OutputPathName="Split Records.UPDATE" SsisName="Entrée de fractionnement conditionnel">
+                                <Annotations>
+                                    <Annotation AnnotationType="Description">Entrée vers la transformation de fractionnement conditionnel</Annotation>
+                                </Annotations>
+                            </InputPath>
+                            <OutputPaths>
+                                <OutputPath Name="Updated Record">
+                                    <Annotations>
+                                        <Annotation AnnotationType="Description">Sortie 1 de la transformation de fractionnement conditionnel</Annotation>
+                                    </Annotations>
+                                    <Expression>[First Load File] != [First Load Table] || [Last Discharge File] != [Last Discharge Table] || [Destination Country File] != [Destination Country Table] || [Consignor Code File] != [Consignor Code Table] || [Consignor Name File] != [Consignor Name Table] || [Consignee Code File] != [Consignee Code Table] || [Consignee Name File] != [Consignee Name Table] || [Job Branch File] != [Job Branch Table] || [Job Dept File] != [Job Dept Table] || [Local Client Code File] != [Local Client Code Table] || [Local Client Name File] != [Local Client Name Table] || [Job Sales Rep File] != [Job Sales Rep Table] || [Job Operator File] != [Job Operator Table] || [Carrier Code File] != [Carrier Code Table] || [Carrier Name File] != [Carrier Name Table] || [Overseas Agent Code File] != [Overseas Agent Code Table] || [Overseas Agent Name File] != [Overseas Agent Name Table] || [House Ref File] != [House Ref Table] || [Incoterm File] != [Incoterm Table] || [Goods Description File] != [Goods Description Table] || [Origin ETD File] != [Origin ETD Table] || [Destination ETA File] != [Destination ETA Table] || [Weight File] != [Weight Table] || [Volume File] != [Volume Table] || [UQ File] != [UQ Table] || [UQ1 File] != [UQ1 Table] || [UQ2 File] != [UQ2 Table] || [UQ3 File] != [UQ3 Table] || [UQ4 File] != [UQ4 Table] || [Chargeable File] != [Chargeable Table] || [Inner File] != [Inner Table] || [Outer File] != [Outer Table] || [Added File] != [Added Table] || [Brokerage Job File] != [Brokerage Job Table] || [Is Master/ Lead File] != [Is Master/ Lead Table] || [Master/ Lead Ref File] != [Master/ Lead Ref Table] || [Import Broker Code File] != [Import Broker Code Table] || [Import Broker Name File] != [Import Broker Name Table] || [Export Broker Code File] != [Export Broker Code Table] || [Export Broker Name File] != [Export Broker Name Table] || [Job Status File] != [Job Status Table] || [Job Opened File] != [Job Opened Table] || [Consol ID File] != [Consol ID Table] || [ETD First Load File] != [ETD First Load Table] || [ETA Last Discharge File] != [ETA Last Discharge Table] || [Master BL File] != [Master BL Table] || [Vessel File] != [Vessel Table] || [Flight/Voyage File] != [Flight/Voyage Table] || [TEU File] != [TEU Table] || [Container Count File] != [Container Count Table] || [20F File] != [20F Table] || [20R File] != [20R Table] || [20H File] != [20H Table] || [40F File] != [40F Table] || [40R File] != [40R Table] || [40HC File] != [40HC Table] || [45F File] != [45F Table] || [Actual Cartage Delivery File] != [Actual Cartage Delivery Table] || [Consol ATD File] != [Consol ATD Table] || [Direction File] != [Direction Table] || [Trans File] != [Trans Table] || [Customs Info File] != [Customs Info Table] || [Mode File] != [Mode Table] || [Origin File] != [Origin Table] || [Origin Ctry File] != [Origin Ctry Table] || [Destination File] != [Destination Table] || [Additional Terms File] != [Additional Terms Table] || [PPD/CCX File] != [PPD/CCX Table] || [Loading Metres File] != [Loading Metres Table] || [Controlling Customer Code File] != [Controlling Customer Code Table] || [Controlling Customer Name File] != [Controlling Customer Name Table] || [Controlling Agent Code File] != [Controlling Agent Code Table] || [Controlling Agent Name File] != [Controlling Agent Name Table] || [Transport Job File] != [Transport Job Table] || [Recognised Revenue File] != [Recognised Revenue Table] || [Recognised WIP File] != [Recognised WIP Table] || [Total Recognised Income (REV+WIP) File] != [Total Recognised Income (REV+WIP) Table] || [Recognised Cost File] != [Recognised Cost Table] || [Recognised Accrual File] != [Recognised Accrual Table] || [Total Recognised Expense (CST+ACR) File] != [Total Recognised Expense (CST+ACR) Table] || [Job Profit File] != [Job Profit Table] || [Load File] != [Load Table] || [Discharge File] != [Discharge Table] || [ETD Load File] != [ETD Load Table] || [Sending Agent Code File] != [Sending Agent Code Table] || [Sending Agent Name File] != [Sending Agent Name Table] || [Receiving Agent File] != [Receiving Agent Table] || [Receiving Agent Name File] != [Receiving Agent Name Table] || [Co-loaded With File] != [Co-loaded With Table] || [Co-loader Name File] != [Co-loader Name Table] || [Other File] != [Other Table] || [GEN File] != [GEN Table] || [Total Unrecognised Income(REV+WIP) File] != [Total Unrecognised Income(REV+WIP) Table] || [Consignor City File] != [Consignor City Table] || [Consignor State File] != [Consignor State Table] || [Consignor Postcode File] != [Consignor Postcode Table] || [Consignee City File] != [Consignee City Table] || [Consignee State File] != [Consignee State Table] || [Consignee Postcode File] != [Consignee Postcode Table] || [Consol ATA File] != [Consol ATA Table] || [Job Revenue Recognition Date File] != [Job Revenue Recognition Date Table] || [Local Client AR Settlement Group Code File] != [Local Client AR Settlement Group Code Table] || [Local Client AR Settlement Group Name File] != [Local Client AR Settlement Group Name Table] || [Job Overseas Agent AR Settlement Group Code File] != [Job Overseas Agent AR Settlement Group Code Table] || [Job Overseas Agent AR Settlement Group Name File] != [Job Overseas Agent AR Settlement Group Name Table] || [Total Unrecognised Expense (CST+ACR) File] != [Total Unrecognised Expense (CST+ACR) Table] || [Total Accrual (Recognised+Unrecognised) File] != [Total Accrual (Recognised+Unrecognised) Table] || [Total Cost (Recognised+Unrecognised) File] != [Total Cost (Recognised+Unrecognised) Table] || [Total Expense (Recognised+Unrecognised CST+ACR) File] != [Total Expense (Recognised+Unrecognised CST+ACR) Table] || [Total Income (Recognised+Unrecognised REV+WIP) File] != [Total Income (Recognised+Unrecognised REV+WIP) Table] || [Total Revenue (Recognised+Unrecognised) File] != [Total Revenue (Recognised+Unrecognised) Table] || [Total WIP (Recognised+Unrecognised) File] != [Total WIP (Recognised+Unrecognised) Table] || [House Bill Type File] != [House Bill Type Table] || [Unrecognised Cost File] != [Unrecognised Cost Table] || [Shippers Reference File] != [Shippers Reference Table] || [Service Level Code File] != [Service Level Code Table] || [Unrecognised WIP File] != [Unrecognised WIP Table] || [Unrecognised Accrual File] != [Unrecognised Accrual Table] || [Unrecognised Revenue File] != [Unrecognised Revenue Table]</Expression>
+                                </OutputPath>
+                            </OutputPaths>
+                        </ConditionalSplit>
+                        <OleDbCommand Name="Update Old Records" ConnectionName="ImportedProjectConnection1">
+                            <Annotations>
+                                <Annotation AnnotationType="Description">Exécute une instruction SQL pour chaque ligne d&apos;un flux de données. Par exemple, appelez une procédure stockée &apos;nouvelle configuration d&apos;employé&apos; pour chaque ligne de la table &apos;nouveaux employés&apos;. Remarque : l&apos;exécution d&apos;une instruction SQL pour chaque ligne d&apos;un flux de données volumineux peut prendre beaucoup de temps.</Annotation>
+                            </Annotations>
+                            <InputPath OutputPathName="Find Updated Records.Updated Record" SsisName="Entrée de commande OLE DB" />
+                            <Parameters>
+                                <Parameter SourceColumn="First Load File" TargetColumn="Param_0" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Last Discharge File" TargetColumn="Param_1" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Destination Country File" TargetColumn="Param_2" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Consignor Code File" TargetColumn="Param_3" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Consignor Name File" TargetColumn="Param_4" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Consignee Code File" TargetColumn="Param_5" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Consignee Name File" TargetColumn="Param_6" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Job Branch File" TargetColumn="Param_7" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Job Dept File" TargetColumn="Param_8" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Local Client Code File" TargetColumn="Param_9" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Local Client Name File" TargetColumn="Param_10" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Job Sales Rep File" TargetColumn="Param_11" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Job Operator File" TargetColumn="Param_12" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Carrier Code File" TargetColumn="Param_13" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Carrier Name File" TargetColumn="Param_14" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Overseas Agent Code File" TargetColumn="Param_15" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Overseas Agent Name File" TargetColumn="Param_16" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="House Ref File" TargetColumn="Param_17" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Incoterm File" TargetColumn="Param_18" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Goods Description File" TargetColumn="Param_19" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Origin ETD File" TargetColumn="Param_20" DataType="Date" />
+                                <Parameter SourceColumn="Destination ETA File" TargetColumn="Param_21" DataType="Date" />
+                                <Parameter SourceColumn="Weight File" TargetColumn="Param_22" DataType="Double" />
+                                <Parameter SourceColumn="Volume File" TargetColumn="Param_23" DataType="Double" />
+                                <Parameter SourceColumn="UQ File" TargetColumn="Param_24" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="UQ1 File" TargetColumn="Param_25" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="UQ2 File" TargetColumn="Param_26" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="UQ3 File" TargetColumn="Param_27" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="UQ4 File" TargetColumn="Param_28" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Chargeable File" TargetColumn="Param_29" DataType="Double" />
+                                <Parameter SourceColumn="Inner File" TargetColumn="Param_30" DataType="Double" />
+                                <Parameter SourceColumn="Outer File" TargetColumn="Param_31" DataType="Double" />
+                                <Parameter SourceColumn="Added File" TargetColumn="Param_32" DataType="Date" />
+                                <Parameter SourceColumn="Brokerage Job File" TargetColumn="Param_33" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Is Master/ Lead File" TargetColumn="Param_34" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Master/ Lead Ref File" TargetColumn="Param_35" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Import Broker Code File" TargetColumn="Param_36" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Import Broker Name File" TargetColumn="Param_37" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Export Broker Code File" TargetColumn="Param_38" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Export Broker Name File" TargetColumn="Param_39" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Job Status File" TargetColumn="Param_40" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Job Opened File" TargetColumn="Param_41" DataType="Date" />
+                                <Parameter SourceColumn="Consol ID File" TargetColumn="Param_42" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="ETD First Load File" TargetColumn="Param_43" DataType="DateTime" />
+                                <Parameter SourceColumn="ETA Last Discharge File" TargetColumn="Param_44" DataType="DateTime" />
+                                <Parameter SourceColumn="Master BL File" TargetColumn="Param_45" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Vessel File" TargetColumn="Param_46" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Flight/Voyage File" TargetColumn="Param_47" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="TEU File" TargetColumn="Param_48" DataType="Double" />
+                                <Parameter SourceColumn="Container Count File" TargetColumn="Param_49" DataType="Double" />
+                                <Parameter SourceColumn="20F File" TargetColumn="Param_50" DataType="Double" />
+                                <Parameter SourceColumn="20R File" TargetColumn="Param_51" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="20H File" TargetColumn="Param_52" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="40F File" TargetColumn="Param_53" DataType="Double" />
+                                <Parameter SourceColumn="40R File" TargetColumn="Param_54" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="40HC File" TargetColumn="Param_55" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="45F File" TargetColumn="Param_56" DataType="Double" />
+                                <Parameter SourceColumn="Actual Cartage Delivery File" TargetColumn="Param_57" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Consol ATD File" TargetColumn="Param_58" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Direction File" TargetColumn="Param_59" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Trans File" TargetColumn="Param_60" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Customs Info File" TargetColumn="Param_61" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Mode File" TargetColumn="Param_62" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Origin File" TargetColumn="Param_63" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Origin Ctry File" TargetColumn="Param_64" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Destination File" TargetColumn="Param_65" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Additional Terms File" TargetColumn="Param_66" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="PPD/CCX File" TargetColumn="Param_67" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Loading Metres File" TargetColumn="Param_68" DataType="Double" />
+                                <Parameter SourceColumn="Controlling Customer Code File" TargetColumn="Param_69" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Controlling Customer Name File" TargetColumn="Param_70" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Controlling Agent Code File" TargetColumn="Param_71" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Controlling Agent Name File" TargetColumn="Param_72" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Transport Job File" TargetColumn="Param_73" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Recognised Revenue File" TargetColumn="Param_74" DataType="Double" />
+                                <Parameter SourceColumn="Recognised WIP File" TargetColumn="Param_75" DataType="Double" />
+                                <Parameter SourceColumn="Total Recognised Income (REV+WIP) File" TargetColumn="Param_76" DataType="Double" />
+                                <Parameter SourceColumn="Recognised Cost File" TargetColumn="Param_77" DataType="Double" />
+                                <Parameter SourceColumn="Recognised Accrual File" TargetColumn="Param_78" DataType="Double" />
+                                <Parameter SourceColumn="Total Recognised Expense (CST+ACR) File" TargetColumn="Param_79" DataType="Double" />
+                                <Parameter SourceColumn="Job Profit File" TargetColumn="Param_80" DataType="Double" />
+                                <Parameter SourceColumn="Load File" TargetColumn="Param_81" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Discharge File" TargetColumn="Param_82" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="ETD Load File" TargetColumn="Param_83" DataType="DateTime" />
+                                <Parameter SourceColumn="ETA Discharge File" TargetColumn="Param_84" DataType="DateTime" />
+                                <Parameter SourceColumn="Sending Agent Code File" TargetColumn="Param_85" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Sending Agent Name File" TargetColumn="Param_86" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Receiving Agent File" TargetColumn="Param_87" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Receiving Agent Name File" TargetColumn="Param_88" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Co-loaded With File" TargetColumn="Param_89" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Co-loader Name File" TargetColumn="Param_90" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Other File" TargetColumn="Param_91" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="GEN File" TargetColumn="Param_92" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Total Unrecognised Income(REV+WIP) File" TargetColumn="Param_93" DataType="Double" />
+                                <Parameter SourceColumn="Consignor City File" TargetColumn="Param_94" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Consignor State File" TargetColumn="Param_95" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Consignor Postcode File" TargetColumn="Param_96" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Consignee City File" TargetColumn="Param_97" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Consignee State File" TargetColumn="Param_98" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Consignee Postcode File" TargetColumn="Param_99" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Consol ATA File" TargetColumn="Param_100" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Job Revenue Recognition Date File" TargetColumn="Param_101" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Local Client AR Settlement Group Code File" TargetColumn="Param_102" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Local Client AR Settlement Group Name File" TargetColumn="Param_103" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Job Overseas Agent AR Settlement Group Code File" TargetColumn="Param_104" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Job Overseas Agent AR Settlement Group Name File" TargetColumn="Param_105" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Total Unrecognised Expense (CST+ACR) File" TargetColumn="Param_106" DataType="Double" />
+                                <Parameter SourceColumn="Total Accrual (Recognised+Unrecognised) File" TargetColumn="Param_107" DataType="Double" />
+                                <Parameter SourceColumn="Total Cost (Recognised+Unrecognised) File" TargetColumn="Param_108" DataType="Double" />
+                                <Parameter SourceColumn="Total Expense (Recognised+Unrecognised CST+ACR) File" TargetColumn="Param_109" DataType="Double" />
+                                <Parameter SourceColumn="Total Income (Recognised+Unrecognised REV+WIP) File" TargetColumn="Param_110" DataType="Double" />
+                                <Parameter SourceColumn="Total Revenue (Recognised+Unrecognised) File" TargetColumn="Param_111" DataType="Double" />
+                                <Parameter SourceColumn="Total WIP (Recognised+Unrecognised) File" TargetColumn="Param_112" DataType="Double" />
+                                <Parameter SourceColumn="House Bill Type File" TargetColumn="Param_113" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Unrecognised Cost File" TargetColumn="Param_114" DataType="Double" />
+                                <Parameter SourceColumn="Shippers Reference File" TargetColumn="Param_115" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Service Level Code File" TargetColumn="Param_116" DataType="StringFixedLength" Length="255" />
+                                <Parameter SourceColumn="Unrecognised WIP File" TargetColumn="Param_117" DataType="Double" />
+                                <Parameter SourceColumn="Unrecognised Accrual File" TargetColumn="Param_118" DataType="Double" />
+                                <Parameter SourceColumn="Unrecognised Revenue File" TargetColumn="Param_119" DataType="Double" />
+                                <Parameter SourceColumn="Shipment ID Table" TargetColumn="Param_120" DataType="StringFixedLength" Length="255" />
+                            </Parameters>
+                            <DirectInput>UPDATE [STG].[ShipmentProfile]
+   SET 
+       [First Load] = ?
+      ,[Last Discharge] = ?
+      ,[Destination Country] = ?
+      ,[Consignor Code] = ?
+      ,[Consignor Name] = ?
+      ,[Consignee Code] = ?
+      ,[Consignee Name] = ?
+      ,[Job Branch] = ?
+      ,[Job Dept] = ?
+      ,[Local Client Code] = ?
+      ,[Local Client Name] = ?
+      ,[Job Sales Rep] = ?
+      ,[Job Operator] = ?
+      ,[Carrier Code] = ?
+      ,[Carrier Name] = ?
+      ,[Overseas Agent Code] = ?
+      ,[Overseas Agent Name] = ?
+      ,[House Ref] = ?
+      ,[Incoterm] = ?
+      ,[Goods Description] = ?
+      ,[Origin ETD] = ?
+      ,[Destination ETA] = ?
+      ,[Weight] = ?
+      ,[Volume] = ?
+      ,[UQ] = ?
+      ,[UQ1] = ?
+      ,[UQ2] = ?
+      ,[UQ3] = ?
+      ,[UQ4] = ?
+      ,[Chargeable] = ?
+      ,[Inner] = ?
+      ,[Outer] = ?
+      ,[Added] = ?
+      ,[Brokerage Job] = ?
+      ,[Is Master/ Lead] = ?
+      ,[Master/ Lead Ref] = ?
+      ,[Import Broker Code] = ?
+      ,[Import Broker Name] = ?
+      ,[Export Broker Code] = ?
+      ,[Export Broker Name] = ?
+      ,[Job Status] = ?
+      ,[Job Opened] = ?
+      ,[Consol ID] = ?
+      ,[ETD First Load] = ?
+      ,[ETA Last Discharge] = ?
+      ,[Master BL] = ?
+      ,[Vessel] = ?
+      ,[Flight/Voyage] = ?
+      ,[TEU] = ?
+      ,[Container Count] = ?
+      ,[20F] = ?
+      ,[20R] = ?
+      ,[20H] = ?
+      ,[40F] = ?
+      ,[40R] = ?
+      ,[40HC] = ?
+      ,[45F] = ?
+      ,[Actual Cartage Delivery] = ?
+      ,[Consol ATD] = ?
+      ,[Direction] = ?
+      ,[Trans] = ?
+      ,[Customs Info] = ?
+      ,[Mode] = ?
+      ,[Origin] = ?
+      ,[Origin Ctry] = ?
+      ,[Destination] = ?
+      ,[Additional Terms] = ?
+      ,[PPD/CCX] = ?
+      ,[Loading Metres] = ?
+      ,[Controlling Customer Code] = ?
+      ,[Controlling Customer Name] = ?
+      ,[Controlling Agent Code] = ?
+      ,[Controlling Agent Name] = ?
+      ,[Transport Job] = ?
+      ,[Recognised Revenue] = ?
+      ,[Recognised WIP] = ?
+      ,[Total Recognised Income (REV+WIP)] = ?
+      ,[Recognised Cost] = ?
+      ,[Recognised Accrual] = ?
+      ,[Total Recognised Expense (CST+ACR)] = ?
+      ,[Job Profit] = ?
+      ,[Load] = ?
+      ,[Discharge] = ?
+      ,[ETD Load] = ?
+      ,[ETA Discharge] = ?
+      ,[Sending Agent Code] = ?
+      ,[Sending Agent Name] = ?
+      ,[Receiving Agent] = ?
+      ,[Receiving Agent Name] = ?
+      ,[Co-loaded With] = ?
+      ,[Co-loader Name] = ?
+      ,[Other] = ?
+      ,[GEN] = ?
+      ,[Total Unrecognised Income(REV+WIP)] = ?
+      ,[Consignor City] = ?
+      ,[Consignor State] = ?
+      ,[Consignor Postcode] = ?
+      ,[Consignee City] = ?
+      ,[Consignee State] = ?
+      ,[Consignee Postcode] = ?
+      ,[Consol ATA] = ?
+      ,[Job Revenue Recognition Date] = ?
+      ,[Local Client AR Settlement Group Code] = ?
+      ,[Local Client AR Settlement Group Name] = ?
+      ,[Job Overseas Agent AR Settlement Group Code] = ?
+      ,[Job Overseas Agent AR Settlement Group Name] = ?
+      ,[Total Unrecognised Expense (CST+ACR)] = ?
+      ,[Total Accrual (Recognised+Unrecognised)] = ?
+      ,[Total Cost (Recognised+Unrecognised)] = ?
+      ,[Total Expense (Recognised+Unrecognised CST+ACR)] = ?
+      ,[Total Income (Recognised+Unrecognised REV+WIP)] = ?
+      ,[Total Revenue (Recognised+Unrecognised)] = ?
+      ,[Total WIP (Recognised+Unrecognised)] = ?
+      ,[House Bill Type] = ?
+      ,[Unrecognised Cost] = ?
+      ,[Shippers Reference] = ?
+      ,[Service Level Code] = ?
+      ,[Unrecognised WIP] = ?
+      ,[Unrecognised Accrual] = ?
+      ,[Unrecognised Revenue] = ?
+      ,[UpdatedDate] = GETUTCDATE()
+ WHERE [Shipment ID] = ?
+
+
+</DirectInput>
+                        </OleDbCommand>
+                        <OleDbSource Name="Shipment Staging" ConnectionName="ImportedProjectConnection1">
+                            <Annotations>
+                                <Annotation AnnotationType="Description">Source OLE DB</Annotation>
+                            </Annotations>
+                            <Columns>
+                                <Column SourceColumn="Shipment ID" SortKeyPosition="1" />
+                            </Columns>
+                            <ExternalTableInput Table="[STG].[ShipmentProfile]" />
+                        </OleDbSource>
+                    </Transformations>
+                </Dataflow>
+            </Tasks>
+        </Package>
+    </Packages>
+</Biml>
