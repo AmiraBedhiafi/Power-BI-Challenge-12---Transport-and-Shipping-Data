@@ -26,13 +26,12 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-2VQHHTO</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhOEZ8qNM3k+IxrNn4gL5qwAAAAACAAAAAAAQZgAAAAEAACAAAADtrPW+0xSgDKpGs25TWoPiHYaw8TQuze24Fa46hInvTAAAAAAOgAAAAAIAACAAAADaUECBQ5r/yZsjyx1bwg1vUC+bzJz2sXyhHrEqE1iemZAAAAALNZM6uOS2v4kKKO80RkxxU9SwwvE5vnLjJ8YMl0X4TjBedqM86q0E/bQHWQblYrlJAVEklXyjUt2jYfmWNXMyPO1zNg3MZb9CCnsQO7wzm3DJkbcxnME/bIZMfJhufQn7aZwdNsa7CjznfiIcF0xfLSus05HV/l0gYHIwt6RVcoZfGyffKoraEsOfHb9rn79AAAAAIrO5r9NyMmbR3iirk27cJgdwJrXhcTENcyJR8fOKn45qBWDVc0aWPCNEpJL4OeMvc3YYfp9ON7Xuv8gJ1/Ty2A==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAhOEZ8qNM3k+IxrNn4gL5qwAAAAACAAAAAAAQZgAAAAEAACAAAACy8OuT6vjNV906H/nRF3DuuXuMwWGvhrOWERW/uhStNwAAAAAOgAAAAAIAACAAAAChnoAAiZ4J+MuhRJuL9wi6UUopZ7L5Ntl1AzUSNGaRz5AAAACJCRupKPbZ0xrepplRxFFOO5dIE/tuGnk7fxtK28+38QdNsE+YwoSub1DJjFoeUoMJpElrEDc8YdRa7k8MIvAs4Vc4eKx8N9us6a3bdMwsF1q+i0L9DKP3lQDE++ajLe7YQDMfsrfnbMg3Ay8mDf5tDFIx+EFoFhevMu23V5OGYGdpcSqnTwHO8CwGFoQghNBAAAAA5mlv3axOzVf+cARm370AOjsjGSMUo66Cmdw88/WCBtTsRCVXOs/LZ7HPhDQPLrJnFi7h52beb3mOGvucOuxvMA==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="StagingShipment.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="ODSShipment.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="Upsert.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Cleaning File.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="ShippingExcelSource.conmgr" />
@@ -298,10 +297,10 @@
                 <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">71</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">120</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{DC3CA816-AD6B-4B2C-BF30-A2B750F0F52F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A7154C8B-F4A1-4879-8A87-41E0FBA75C39}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -309,33 +308,16 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="ODSShipment.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="Cleaning File.dtsx">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">{3BD2442C-A21C-4B0A-97FD-05F03F9B3EB4}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">64</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{C3B50B81-E83D-4455-BC9A-2E272A2B1AA2}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="Upsert.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{BAC1CE62-157E-4BDF-9171-79FF54B28858}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{701DAE2A-108F-4255-9B85-C97D0DD1F298}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{11EC5C7C-1C50-41A6-ACFC-9173474BD276}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
